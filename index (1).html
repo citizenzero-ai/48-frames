@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============ SEO ============ -->
+<title>48 Frames — Product Photos &amp; Video in 48 Hours</title>
+<meta name="description" content="Studio-quality product photos and video in 48 hours — no shipping, no studios, no five-figure invoices. Your first set is free. Starting at $499.">
+<link rel="canonical" href="https://48frames.co/"><!-- set your real domain -->
+<meta name="theme-color" content="#15171C">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="48 Frames — Product Photos &amp; Video in 48 Hours">
+<meta property="og:description" content="Pro-grade product photos and video, delivered in 48 hours. No studio. No shipping. From $499.">
+<meta property="og:url" content="https://48frames.co/">
+<meta property="og:image" content="https://48frames.co/og-image.jpg"><!-- add a 1200x630 share image -->
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Structured data: Service + FAQ (helps rich results) -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"ProfessionalService",
+  "name":"48 Frames","url":"https://48frames.co/",
+  "description":"Product photography and video studio for small brands. Studio-grade visuals delivered in 48 hours.",
+  "areaServed":"US","priceRange":"$$",
+  "makesOffer":{"@type":"Offer","name":"Product photography pack","priceCurrency":"USD","price":"499"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"How does AI product photography work?","acceptedAnswer":{"@type":"Answer","text":"You send the product photos you already have. We place your product into professionally lit, on-brand scenes, then a human designer refines every frame to a commercial standard before delivery."}},
+    {"@type":"Question","name":"Do I have to ship my products?","acceptedAnswer":{"@type":"Answer","text":"No. We work from the images you already have, so there is no shipping, no studio booking, and no waiting on logistics."}},
+    {"@type":"Question","name":"How fast will I get my photos?","acceptedAnswer":{"@type":"Answer","text":"Most sets are delivered in 48 to 72 hours after your kickoff call."}},
+    {"@type":"Question","name":"How much does product photography cost?","acceptedAnswer":{"@type":"Answer","text":"Packs start at $499. Traditional shoots typically run $5,000 to $10,000 and take weeks. We deliver comparable quality in days for a fraction of the cost."}},
+    {"@type":"Question","name":"Can I use the images on Amazon, Shopify, and social?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every set is sized and formatted for your store, marketplace listings, and ad platforms, with full commercial usage rights."}},
+    {"@type":"Question","name":"What if I don't like a shot?","acceptedAnswer":{"@type":"Answer","text":"We revise until it's right. You approve the final set before it's considered done."}}
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============ 48 FRAMES TOKENS (from brand book) ============ */
+:root{
+  --ink:#15171C; --ink-2:#2B2E36; --paper:#F2F1ED; --surface:#FBFAF7; --white:#FFFFFF;
+  --line:#DAD9D3; --muted:#565961; --muted-2:#9A9CA2;
+  --teal:#0F8F8A; --teal-deep:#0B6E6A; --teal-tint:#CDE8E6; --teal-wash:#E9F4F3;
+  --orange:#ED8B2B; --orange-deep:#CF7318; --orange-text:#8F4F00; --orange-tint:#FBE2C5; --orange-wash:#FCF1E2;
+  --grade:linear-gradient(90deg,var(--teal),var(--orange));
+  --good:#2F8F5B; --bad:#C8472F;
+  --font-display:"Archivo Black",Arial,sans-serif;
+  --font-head:"Archivo",Arial,sans-serif;
+  --font-body:"Inter",-apple-system,Segoe UI,sans-serif;
+  --font-mono:"Space Mono",ui-monospace,Menlo,monospace;
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;--s8:64px;--s9:96px;--s10:128px;
+  --r-sm:6px;--r-md:12px;--r-lg:20px;--r-pill:999px;
+  --container:1180px;--ease:cubic-bezier(.22,.61,.36,1);
+  --shadow:0 1px 2px rgba(21,23,28,.05),0 14px 36px -18px rgba(21,23,28,.22);
+  --nav-h:64px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;line-height:1.06;letter-spacing:-.02em}
+p{color:var(--ink-2)}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 var(--s5)}
+.eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.eyebrow .num{color:var(--orange-text)}
+.grade-bar{height:5px;width:96px;background:var(--grade);border-radius:99px}
+em{font-style:normal;color:var(--teal-deep);font-weight:600}
+
+/* viewfinder device */
+.vf{position:relative}
+.vf::before,.vf::after,.vf>.vf-b::before,.vf>.vf-b::after{content:"";position:absolute;border:var(--vfw,3px) solid var(--vfc,var(--ink));width:var(--vfl,16px);height:var(--vfl,16px);pointer-events:none}
+.vf::before{top:0;left:0;border-right:0;border-bottom:0}
+.vf::after{bottom:0;right:0;border-left:0;border-top:0}
+.vf>.vf-b::before{top:0;right:0;border-left:0;border-bottom:0}
+.vf>.vf-b::after{bottom:0;left:0;border-right:0;border-top:0}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-head);font-weight:600;font-size:15px;border-radius:var(--r-pill);padding:14px 24px;border:2px solid transparent;cursor:pointer;transition:transform .15s var(--ease),background .15s var(--ease);text-align:center}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--ink);color:var(--paper)}.btn-primary:hover{background:#000}
+.btn-brand{background:var(--teal-deep);color:#fff}.btn-brand:hover{background:#085451}
+.btn-accent{background:var(--orange);color:var(--ink)}.btn-accent:hover{background:var(--orange-deep)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+.btn-light{background:var(--paper);color:var(--ink)}.btn-light:hover{background:#fff}
+
+/* ============ NAV ============ */
+.nav{position:sticky;top:0;z-index:50;height:var(--nav-h);background:rgba(242,241,237,.85);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:11px}
+.nav-logo .b{--vfw:2.5px;--vfl:9px;position:relative;padding:7px 9px;display:grid;place-items:center}
+.nav-logo .b .n{font-family:var(--font-display);font-size:22px;line-height:.8;letter-spacing:-.02em}
+.nav-logo .w{font-family:var(--font-head);font-weight:700;letter-spacing:.22em;font-size:13px}
+.nav-links{display:none}
+.nav-cta{display:none}
+.nav-toggle{display:inline-flex;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+.nav-toggle span{width:24px;height:2.5px;background:var(--ink);border-radius:2px;transition:.2s var(--ease)}
+.nav-toggle.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+.mobile-menu{position:fixed;inset:var(--nav-h) 0 auto 0;background:var(--paper);border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .28s var(--ease);z-index:49;box-shadow:var(--shadow)}
+.mobile-menu.open{transform:translateY(0)}
+.mobile-menu a{display:block;padding:16px var(--s5);font-family:var(--font-head);font-weight:600;font-size:18px;border-bottom:1px solid var(--line)}
+.mobile-menu .btn{margin:var(--s4) var(--s5) var(--s5);width:calc(100% - var(--s5)*2)}
+
+@media(min-width:920px){
+  .nav-toggle,.mobile-menu{display:none}
+  .nav-links{display:flex;gap:var(--s6);align-items:center}
+  .nav-links a{font-family:var(--font-head);font-weight:500;font-size:15px;color:var(--ink-2);transition:color .15s}
+  .nav-links a:hover{color:var(--teal-deep)}
+  .nav-cta{display:inline-flex}
+}
+
+/* ============ SECTION RHYTHM ============ */
+main section{padding:var(--s8) 0;scroll-margin-top:calc(var(--nav-h) + 8px)}
+@media(min-width:760px){main section{padding:var(--s9) 0}}
+.shead .grade-bar{margin-bottom:var(--s3)}
+.shead h2{font-size:clamp(28px,7vw,44px);margin:var(--s3) 0 var(--s3)}
+.shead p{font-size:17px;max-width:60ch}
+@media(min-width:760px){.shead p{font-size:19px}}
+
+/* ============ HERO ============ */
+.hero{background:var(--paper);padding-top:var(--s7);padding-bottom:var(--s8)}
+.hero .wrap{display:grid;gap:var(--s7)}
+.hero h1{font-size:clamp(36px,10vw,68px);line-height:1.0;letter-spacing:-.03em}
+.hero h1 .hl{color:var(--teal-deep)}
+.hero .sub{font-size:18px;color:var(--ink-2);margin:var(--s5) 0;max-width:46ch}
+.hero .cta-row{display:flex;flex-direction:column;gap:var(--s3)}
+.hero .cta-row .btn{width:100%}
+.hero .chips{display:flex;flex-wrap:wrap;gap:var(--s4);margin-top:var(--s6);font-family:var(--font-mono);font-size:12px;color:var(--muted);letter-spacing:.04em}
+.hero .chips b{color:var(--ink);font-family:var(--font-head);font-weight:700}
+/* hero visual */
+.shot{--vfw:4px;--vfl:26px;position:relative;border-radius:var(--r-md);overflow:hidden;aspect-ratio:4/5;display:grid;place-items:center;background:
+  radial-gradient(120% 90% at 75% 15%,rgba(237,139,43,.55),transparent 55%),
+  radial-gradient(120% 110% at 15% 95%,rgba(15,143,138,.7),transparent 55%),
+  linear-gradient(135deg,#1c2a2c,#243033)}
+.shot .pad{position:absolute;inset:18px}
+.shot .label{color:#fff;text-align:center;padding:var(--s5)}
+.shot .label .k{font-family:var(--font-display);font-size:clamp(26px,7vw,40px);letter-spacing:-.02em}
+.shot .label .s{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.8;margin-top:8px}
+.shot .timer{position:absolute;top:30px;left:30px;font-family:var(--font-mono);font-size:12px;color:#fff;background:rgba(0,0,0,.35);padding:5px 10px;border-radius:6px;display:flex;align-items:center;gap:7px}
+.shot .timer .dot{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+@media(min-width:880px){
+  .hero .wrap{grid-template-columns:1.05fr .95fr;align-items:center;gap:var(--s8)}
+  .hero .cta-row{flex-direction:row}
+  .hero .cta-row .btn{width:auto}
+  .shot{aspect-ratio:4/5;max-width:440px;margin-left:auto}
+}
+
+/* ============ PILLARS ============ */
+.pillars{background:var(--ink);color:var(--paper)}
+.pillars .grid{display:grid;gap:var(--s5)}
+.pillar{--vfc:var(--paper);position:relative;padding:var(--s5) 0}
+.pillar .k{font-family:var(--font-head);font-weight:700;font-size:24px;letter-spacing:-.02em;display:flex;align-items:baseline;gap:10px;color:var(--paper)}
+.pillar .k i{font-family:var(--font-mono);font-style:normal;color:var(--orange);font-size:16px}
+.pillar p{color:#E2E3E6;font-size:15px;margin-top:var(--s2);max-width:42ch}
+@media(min-width:760px){.pillars .grid{grid-template-columns:repeat(3,1fr);gap:var(--s7)}}
+
+/* ============ WORK ============ */
+.work .gallery{display:grid;gap:var(--s6);margin-top:var(--s6)}
+.proj h3{font-size:22px}
+.proj .cat{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:6px;font-weight:700}
+.proj .thumbs{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s3);margin-top:var(--s4)}
+.thumb{aspect-ratio:1;border-radius:var(--r-sm);overflow:hidden;position:relative}
+.thumb .tag{position:absolute;left:8px;bottom:8px;font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;color:#fff;background:rgba(0,0,0,.55);padding:3px 6px;border-radius:4px;text-transform:uppercase}
+.proj .note{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);margin-top:var(--s3)}
+@media(min-width:760px){.work .gallery{grid-template-columns:repeat(3,1fr)}.proj .thumbs{grid-template-columns:repeat(2,1fr)}}
+
+/* ============ HOW ============ */
+.how{background:var(--surface)}
+.steps{display:grid;gap:var(--s5);margin-top:var(--s6);counter-reset:step}
+.step{--vfl:18px;--vfw:3px;position:relative;background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--s6) var(--s5)}
+.step .n{font-family:var(--font-display);font-size:30px;color:var(--teal-deep);letter-spacing:-.02em}
+.step h3{font-size:20px;margin:var(--s3) 0 var(--s2)}
+.step p{font-size:15px}
+@media(min-width:760px){.steps{grid-template-columns:repeat(3,1fr)}}
+
+/* ============ PRICING ============ */
+.toggle{display:inline-flex;background:var(--white);border:1px solid var(--line);border-radius:var(--r-pill);padding:4px;margin-top:var(--s5);font-family:var(--font-head);font-weight:600;font-size:14px}
+.toggle button{border:0;background:none;cursor:pointer;padding:9px 18px;border-radius:var(--r-pill);color:var(--ink-2)}
+.toggle button.active{background:var(--ink);color:var(--paper)}
+.toggle .save{color:var(--orange-text);font-family:var(--font-mono);font-size:11px;margin-left:4px}
+.tiers{display:grid;gap:var(--s5);margin-top:var(--s6)}
+.tier{position:relative;background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);padding:var(--s6) var(--s5);display:flex;flex-direction:column}
+.tier.feat{--vfw:3px;--vfl:20px;border-color:var(--teal)}
+.tier .pop{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--teal-deep);color:#fff;font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:var(--r-pill)}
+.tier .pk{font-family:var(--font-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.tier .desc{font-size:13px;color:var(--ink-2);min-height:36px;margin-top:6px}
+.tier .amt{font-family:var(--font-display);font-size:40px;letter-spacing:-.02em;margin:var(--s4) 0 0}
+.tier .per{font-family:var(--font-mono);font-size:12px;color:var(--ink-2)}
+.tier ul{list-style:none;margin:var(--s5) 0;display:grid;gap:9px;flex:1}
+.tier li{font-size:14px;color:var(--ink-2);display:flex;gap:9px}
+.tier li::before{content:"›";color:var(--orange-text);font-family:var(--font-mono);font-weight:700}
+.tier .btn{width:100%}
+.byo{text-align:center;font-size:14px;color:var(--ink-2);margin-top:var(--s6)}
+.byo a{color:var(--teal-deep);font-weight:600;border-bottom:2px solid var(--orange)}
+@media(min-width:760px){.tiers{grid-template-columns:repeat(3,1fr);align-items:stretch}}
+
+/* ============ FREE OFFER ============ */
+.free{--vfc:var(--paper);--vfw:4px;--vfl:30px;background:var(--ink);color:var(--paper);border-radius:var(--r-lg);position:relative;padding:var(--s8) var(--s5);text-align:center;margin:0 auto;max-width:var(--container)}
+.free h2{font-size:clamp(28px,7vw,42px)}
+.free p{color:#E2E3E6;max-width:48ch;margin:var(--s4) auto;font-size:16px}
+.lead-form{display:flex;flex-direction:column;gap:var(--s3);max-width:420px;margin:var(--s6) auto 0}
+.lead-form input{font-family:var(--font-body);font-size:15px;padding:14px 16px;border:1px solid #3a3d45;border-radius:var(--r-sm);background:#1f222a;color:var(--paper)}
+.lead-form input::placeholder{color:#8a8d95}
+.lead-form input:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:transparent}
+.free .val{font-family:var(--font-mono);font-size:12px;color:var(--orange);margin-top:var(--s4);letter-spacing:.08em}
+
+/* ============ ABOUT ============ */
+.about .grid{display:grid;gap:var(--s6);margin-top:var(--s6)}
+.about .card{background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--s5)}
+.about .card h4{font-size:18px;margin-bottom:var(--s2);color:var(--ink)}
+.about .card p{font-size:14px;color:var(--ink-2)}
+@media(min-width:760px){.about .grid{grid-template-columns:repeat(3,1fr)}}
+
+/* ============ FAQ ============ */
+.faq .list{margin-top:var(--s6);border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:var(--s5) 0;display:flex;justify-content:space-between;gap:var(--s4);align-items:center;font-family:var(--font-head);font-weight:600;font-size:17px;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .ic{flex:0 0 auto;width:24px;height:24px;position:relative}
+.faq summary .ic::before,.faq summary .ic::after{content:"";position:absolute;background:var(--teal-deep);transition:.2s var(--ease)}
+.faq summary .ic::before{top:11px;left:4px;width:16px;height:2px}
+.faq summary .ic::after{top:4px;left:11px;width:2px;height:16px}
+.faq details[open] summary .ic::after{transform:rotate(90deg);opacity:0}
+.faq details p{padding:0 0 var(--s5);font-size:15px;max-width:64ch;color:var(--ink-2)}
+
+/* ============ FINAL CTA ============ */
+.final{text-align:center}
+.final h2{font-size:clamp(30px,8vw,52px)}
+.final p{max-width:46ch;margin:var(--s4) auto var(--s6);font-size:17px}
+
+/* ============ FOOTER ============ */
+footer{background:var(--ink);color:#C9CACE;padding:var(--s8) 0 var(--s6)}
+footer .top{display:grid;gap:var(--s6)}
+footer .brand .nav-logo .n,footer .brand .nav-logo .w{color:var(--paper)}
+footer .brand .b{--vfc:var(--paper)}
+footer .brand p{color:#C9CACE;font-size:14px;margin-top:var(--s3);max-width:34ch}
+footer .col h5{color:var(--paper);font-family:var(--font-head);font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:var(--s3)}
+footer .col a{display:block;color:#D8D9DC;font-size:14px;padding:5px 0}
+footer .col a:hover{color:var(--paper)}
+footer .grade-bar{width:100%;height:3px;margin:var(--s7) 0 var(--s5)}
+footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;color:#AAACB2;display:flex;flex-wrap:wrap;gap:var(--s4);justify-content:space-between}
+@media(min-width:760px){footer .top{grid-template-columns:2fr 1fr 1fr 1fr}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap">
+    <a class="nav-logo" href="#top" aria-label="48 Frames home">
+      <span class="b vf"><span class="vf-b"></span><span class="n">48</span></span>
+      <span class="w">FRAMES</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#free" class="btn btn-brand nav-cta">Book a free shoot</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mmenu">
+  <a href="#work">Work</a>
+  <a href="#how">How it works</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#faq">FAQ</a>
+  <a href="#free" class="btn btn-brand">Book a free shoot</a>
+</div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-label="Intro">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Product photo + video studio</p>
+      <h1>Pro product photos and video — <span class="hl">delivered in 48 hours.</span></h1>
+      <p class="sub">Studio-grade visuals for your store, your ads, and your shelf. No studio bookings. No five-figure invoices. No reshoots.</p>
+      <div class="cta-row">
+        <a href="#free" class="btn btn-primary">Get a free shoot</a>
+        <a href="#how" class="btn btn-ghost">See how it works</a>
+      </div>
+      <div class="chips">
+        <span><b>48-hr</b> turnaround</span>
+        <span><b>10 photos + 3 videos</b> per scene</span>
+        <span><b>Unlimited</b> revisions</span>
+      </div>
+    </div>
+    <!-- HERO VISUAL — replace this graded placeholder with a real product shot:
+         <img src="hero.jpg" alt="Product on a sunlit surface, studio-graded" loading="eager"> -->
+    <figure class="shot vf" role="img" aria-label="Sample graded product scene">
+      <span class="vf-b"></span>
+      <div class="timer"><span class="dot"></span>REC · 48:00:00</div>
+      <div class="label"><div class="k">YOUR PRODUCT,<br>GRADED</div><div class="s">Cool shadows · warm highlights</div></div>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ PILLARS ============ -->
+<section class="pillars" aria-label="Why 48 Frames">
+  <div class="wrap">
+    <div class="grid">
+      <div class="pillar vf reveal"><span class="vf-b"></span><div class="k"><i>01</i> Fast.</div><p>Visuals in 2–3 business days, not the weeks a traditional shoot takes to even schedule.</p></div>
+      <div class="pillar vf reveal"><span class="vf-b"></span><div class="k"><i>02</i> Sharp.</div><p>A human eye on every frame. If a shot isn't right, we remake it — until it works.</p></div>
+      <div class="pillar vf reveal"><span class="vf-b"></span><div class="k"><i>03</i> Honest.</div><p>Real people, real replies, full usage rights. AI is our tool, not our identity.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="shead reveal">
+      <div class="grade-bar"></div>
+      <p class="eyebrow">Selected work</p>
+      <h2>See what 48 hours looks like.</h2>
+      <p>We shoot across categories — food, beverage, personal care, and more. Every set is built around your real product and the scenes your customers live in.</p>
+    </div>
+    <div class="gallery">
+      <!-- PROJECT 1 — replace thumbs with real <img> + descriptive alt -->
+      <article class="proj reveal">
+        <div class="cat">Beverage</div>
+        <h3>Brightwater Tonic</h3>
+        <div class="thumbs">
+          <div class="thumb" style="background:radial-gradient(120% 100% at 30% 20%,rgba(237,139,43,.5),transparent),linear-gradient(135deg,#1f2d2e,#2c3a3c)"><span class="tag">Lifestyle</span></div>
+          <div class="thumb" style="background:linear-gradient(135deg,#e7e6e1,#cfceC7)"><span class="tag" style="background:rgba(0,0,0,.35)">Hero</span></div>
+          <div class="thumb" style="background:linear-gradient(135deg,#0f8f8a,#0b6e6a)"><span class="tag">In-use</span></div>
+          <div class="thumb" style="background:linear-gradient(135deg,#ed8b2b,#cf7318)"><span class="tag">Macro</span></div>
+        </div>
+        <div class="note">Three scenes · 12 hours</div>
+      </article>
+      <!-- PROJECT 2 -->
+      <article class="proj reveal">
+        <div class="cat">Personal care</div>
+        <h3>Verena Body Oil</h3>
+        <div class="thumbs">
+          <div class="thumb" style="background:linear-gradient(135deg,#e9e7e1,#d4d2cb)"><span class="tag" style="background:rgba(0,0,0,.35)">Hero</span></div>
+          <div class="thumb" style="background:radial-gradient(120% 100% at 70% 30%,rgba(15,143,138,.6),transparent),linear-gradient(135deg,#26322f,#33403c)"><span class="tag">Lifestyle</span></div>
+          <div class="thumb" style="background:linear-gradient(135deg,#ed8b2b,#d2731a)"><span class="tag">Macro</span></div>
+          <div class="thumb" style="background:linear-gradient(135deg,#0f8f8a,#0b6e6a)"><span class="tag">Detail</span></div>
+        </div>
+        <div class="note">Three scenes · 14 hours</div>
+      </article>
+      <!-- PROJECT 3 -->
+      <article class="proj reveal">
+        <div class="cat">Pantry</div>
+        <h3>Wildgrain Granola</h3>
+        <div class="thumbs">
+          <div class="thumb" style="background:linear-gradient(135deg,#0f8f8a,#0b6e6a)"><span class="tag">Lifestyle</span></div>
+          <div class="thumb" style="background:linear-gradient(135deg,#ece9e2,#d2d0c8)"><span class="tag" style="background:rgba(0,0,0,.35)">Hero</span></div>
+          <div class="thumb" style="background:radial-gradient(120% 100% at 30% 70%,rgba(237,139,43,.55),transparent),linear-gradient(135deg,#222e2c,#2f3b38)"><span class="tag">Table</span></div>
+          <div class="thumb" style="background:linear-gradient(135deg,#ed8b2b,#cf7318)"><span class="tag">Macro</span></div>
+        </div>
+        <div class="note">Three scenes · 10 hours</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW ============ -->
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="shead reveal">
+      <div class="grade-bar"></div>
+      <p class="eyebrow">How it works</p>
+      <h2>Three steps. Two days. Done.</h2>
+    </div>
+    <div class="steps">
+      <div class="step vf reveal"><span class="vf-b"></span><div class="n">01</div><h3>Book a free shoot</h3><p>Jump on a quick call. Tell us about your brand and pick your scenes.</p></div>
+      <div class="step vf reveal"><span class="vf-b"></span><div class="n">02</div><h3>Send what you've got</h3><p>The product images you already have. No shipping, no studio, no logistics.</p></div>
+      <div class="step vf reveal"><span class="vf-b"></span><div class="n">03</div><h3>Get your set</h3><p>10 photos and 3 videos per product, per scene — in 48–72 hours, ready to ship.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <div class="shead reveal">
+      <div class="grade-bar"></div>
+      <p class="eyebrow">Pricing</p>
+      <h2>Pricing that scales with you.</h2>
+      <p>No surprises. Pick a pack or build your own — and switch between one-time and monthly any time.</p>
+      <div class="toggle" role="tablist" aria-label="Billing">
+        <button class="active" id="bt-once" aria-selected="true">One-time</button>
+        <button id="bt-month" aria-selected="false">Monthly <span class="save">save</span></button>
+      </div>
+    </div>
+    <!-- NOTE: example prices — set your real numbers in the data-* attributes below -->
+    <div class="tiers">
+      <div class="tier reveal">
+        <div class="pk">Starter · 3-Pack</div>
+        <div class="desc">1 product × 3 scenes, or mix any way you like.</div>
+        <div class="amt"><span class="price" data-once="499" data-month="449">$499</span></div>
+        <div class="per">30 photos + 9 videos</div>
+        <ul><li>48-hour delivery</li><li>Unlimited revisions</li><li>Full commercial rights</li></ul>
+        <a href="#free" class="btn btn-ghost">Get started</a>
+      </div>
+      <div class="tier feat vf reveal"><span class="vf-b"></span>
+        <div class="pop">Most popular</div>
+        <div class="pk">Growth · 6-Pack</div>
+        <div class="desc">2 products × 3 scenes, or any 6-pack combo.</div>
+        <div class="amt"><span class="price" data-once="899" data-month="799">$899</span></div>
+        <div class="per">60 photos + 18 videos</div>
+        <ul><li>48-hour delivery</li><li>Unlimited revisions</li><li>Full commercial rights</li><li>Priority queue</li></ul>
+        <a href="#free" class="btn btn-brand">Get started</a>
+      </div>
+      <div class="tier reveal">
+        <div class="pk">Launch · 9-Pack</div>
+        <div class="desc">3 products × 3 scenes — a complete launch kit.</div>
+        <div class="amt"><span class="price" data-once="1249" data-month="1099">$1,249</span></div>
+        <div class="per">90 photos + 27 videos</div>
+        <ul><li>48-hour delivery</li><li>Unlimited revisions</li><li>Full commercial rights</li><li>Priority queue</li></ul>
+        <a href="#free" class="btn btn-ghost">Get started</a>
+      </div>
+    </div>
+    <p class="byo">Need something custom? <a href="#free">Build your own pack →</a></p>
+  </div>
+</section>
+
+<!-- ============ FREE OFFER ============ -->
+<section aria-label="Free first shoot">
+  <div class="free vf reveal" id="free"><span class="vf-b"></span>
+    <p class="eyebrow" style="color:var(--orange)">No commitment · no pitch</p>
+    <h2 style="margin-top:12px">Your first set is on us.</h2>
+    <p>Book a call, tell us about your brand, and we'll produce your first set — 10 photos and 3 videos — completely free. It's not a sales call. It's a working session, and you keep the assets whether you continue with us or not.</p>
+    <!-- Wire this to Formspree, Cal.com, or your CRM. Replace action="" with your endpoint. -->
+    <form class="lead-form" action="https://formspree.io/f/your-id" method="POST">
+      <input type="email" name="email" placeholder="you@yourbrand.com" required aria-label="Email">
+      <input type="text" name="brand" placeholder="Brand name" aria-label="Brand name">
+      <button type="submit" class="btn btn-accent">Claim my free set</button>
+    </form>
+    <div class="val">A $199 VALUE · YOURS FREE, NO STRINGS</div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="shead reveal">
+      <div class="grade-bar"></div>
+      <p class="eyebrow">About</p>
+      <h2>Built for brands that punch above their weight.</h2>
+      <p>Small brands deserve to look as polished as a Fortune 500 — without paying like one. We use AI the way a designer uses Photoshop: it lets us move fast, but the eye, the craft, and the reply you get back in two hours are still us. <!-- Swap in your real founder story here. --></p>
+    </div>
+    <div class="grid">
+      <div class="card reveal"><h4>Agency quality</h4><p>The polish of a $10k shoot, set by a human creative bar — not raw, off-the-shelf AI output.</p></div>
+      <div class="card reveal"><h4>Startup speed</h4><p>Days, not weeks. No studio calendars, no shipping windows, no production overhead to pass on to you.</p></div>
+      <div class="card reveal"><h4>Honest pricing</h4><p>Productized packs and plain numbers. You always know what you're getting and what it costs.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="shead reveal">
+      <div class="grade-bar"></div>
+      <p class="eyebrow">FAQ</p>
+      <h2>Questions, answered.</h2>
+    </div>
+    <div class="list reveal">
+      <details><summary>How does AI product photography work?<span class="ic"></span></summary><p>You send the product photos you already have. We place your product into professionally lit, on-brand scenes, then a human designer refines every frame to a commercial standard before delivery.</p></details>
+      <details><summary>Do I have to ship my products?<span class="ic"></span></summary><p>No. We work from the images you already have, so there's no shipping, no studio booking, and no waiting on logistics.</p></details>
+      <details><summary>How fast will I get my photos?<span class="ic"></span></summary><p>Most sets are delivered in 48–72 hours after your kickoff call.</p></details>
+      <details><summary>How much does product photography cost?<span class="ic"></span></summary><p>Packs start at $499. Traditional shoots typically run $5,000–$10,000 and take weeks — we deliver comparable quality in days for a fraction of the cost.</p></details>
+      <details><summary>Can I use the images on Amazon, Shopify, and social?<span class="ic"></span></summary><p>Yes. Every set is sized and formatted for your store, marketplace listings, and ad platforms — with full commercial usage rights.</p></details>
+      <details><summary>What if I don't like a shot?<span class="ic"></span></summary><p>We revise until it's right. You approve the final set before it's considered done.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final">
+  <div class="wrap reveal">
+    <div class="grade-bar" style="margin:0 auto var(--s4)"></div>
+    <h2>Ready to see your product<br>in a new light?</h2>
+    <p>Book a free shoot — a $199 value. No card, no commitment. Just see what we can do with your brand.</p>
+    <a href="#free" class="btn btn-brand">Book your free shoot</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">
+        <a class="nav-logo" href="#top">
+          <span class="b vf"><span class="vf-b"></span><span class="n">48</span></span>
+          <span class="w">FRAMES</span>
+        </a>
+        <p>A product photo + video studio for small brands. Studio-grade. In 48 hours.</p>
+      </div>
+      <div class="col"><h5>Studio</h5><a href="#work">Work</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#about">About</a></div>
+      <div class="col"><h5>Contact</h5><a href="mailto:hello@48frames.co">hello@48frames.co</a><a href="#free">Book a free shoot</a></div>
+      <div class="col"><h5>Follow</h5><a href="#">Instagram</a><a href="#">LinkedIn</a></div>
+    </div>
+    <div class="grade-bar"></div>
+    <div class="legal">
+      <span>© 2026 48 FRAMES · EVERY PRODUCT DESERVES A GREAT FRAME</span>
+      <span><a href="#">Privacy</a> · <a href="#">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// mobile menu
+const tgl=document.querySelector('.nav-toggle'),menu=document.getElementById('mmenu');
+tgl.addEventListener('click',()=>{const o=menu.classList.toggle('open');tgl.classList.toggle('open',o);tgl.setAttribute('aria-expanded',o)});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');tgl.classList.remove('open');tgl.setAttribute('aria-expanded',false)}));
+
+// pricing toggle
+const once=document.getElementById('bt-once'),month=document.getElementById('bt-month'),prices=document.querySelectorAll('.price');
+function fmt(n){return '$'+Number(n).toLocaleString()}
+function setMode(m){
+  prices.forEach(p=>p.textContent=fmt(p.dataset[m]));
+  once.classList.toggle('active',m==='once');month.classList.toggle('active',m==='month');
+  once.setAttribute('aria-selected',m==='once');month.setAttribute('aria-selected',m==='month');
+}
+once.addEventListener('click',()=>setMode('once'));
+month.addEventListener('click',()=>setMode('month'));
+
+// scroll reveal
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'))}
+</script>
+</body>
+</html>
