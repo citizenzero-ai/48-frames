@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leads — 48 Frames CRM</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#15171C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ============ 48 FRAMES TOKENS ============ */
+:root{
+  --ink:#15171C; --ink-2:#2B2E36; --paper:#F2F1ED; --surface:#FBFAF7; --white:#FFFFFF;
+  --line:#DAD9D3; --muted:#565961; --muted-2:#9A9CA2;
+  --teal:#0F8F8A; --teal-deep:#0B6E6A; --teal-tint:#CDE8E6; --teal-wash:#E9F4F3;
+  --orange:#ED8B2B; --orange-deep:#CF7318; --orange-text:#8F4F00; --orange-tint:#FBE2C5; --orange-wash:#FCF1E2;
+  --grade:linear-gradient(90deg,var(--teal),var(--orange));
+  --good:#2F8F5B; --bad:#C8472F;
+  --font-display:"Archivo Black",Arial,sans-serif;
+  --font-head:"Archivo",Arial,sans-serif;
+  --font-body:"Inter",-apple-system,Segoe UI,sans-serif;
+  --font-mono:"Space Mono",ui-monospace,Menlo,monospace;
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--s7:48px;--s8:64px;
+  --r-sm:6px;--r-md:12px;--r-lg:20px;--r-pill:999px;
+  --container:1240px;--ease:cubic-bezier(.22,.61,.36,1);
+  --shadow:0 1px 2px rgba(21,23,28,.05),0 14px 36px -18px rgba(21,23,28,.22);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100vh}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 var(--s5)}
+.eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.grade-bar{height:4px;background:var(--grade);border-radius:99px}
+
+/* viewfinder device */
+.vf{position:relative}
+.vf::before,.vf::after,.vf>.vf-b::before,.vf>.vf-b::after{content:"";position:absolute;border:var(--vfw,3px) solid var(--vfc,var(--ink));width:var(--vfl,14px);height:var(--vfl,14px);pointer-events:none}
+.vf::before{top:0;left:0;border-right:0;border-bottom:0}
+.vf::after{bottom:0;right:0;border-left:0;border-top:0}
+.vf>.vf-b::before{top:0;right:0;border-left:0;border-bottom:0}
+.vf>.vf-b::after{bottom:0;left:0;border-right:0;border-top:0}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;font-family:var(--font-head);font-weight:600;font-size:14px;border-radius:var(--r-pill);padding:10px 18px;border:2px solid transparent;cursor:pointer;transition:transform .15s var(--ease),background .15s var(--ease),color .15s;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--ink);color:var(--paper)}.btn-primary:hover{background:#000}
+.btn-brand{background:var(--teal-deep);color:#fff}.btn-brand:hover{background:#085451}
+.btn-ghost{background:transparent;color:var(--ink-2);border-color:var(--line)}.btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+.btn-danger{background:transparent;color:var(--bad);border-color:transparent;padding:8px 10px}
+.btn-danger:hover{background:#fbeae6}
+
+/* ============ HEADER ============ */
+.top{background:var(--ink);color:var(--paper)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--s4);padding-top:var(--s4);padding-bottom:var(--s4);flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:11px}
+.logo .b{--vfw:2.5px;--vfl:9px;--vfc:var(--paper);position:relative;padding:7px 9px;display:grid;place-items:center}
+.logo .b .n{font-family:var(--font-display);font-size:22px;line-height:.8;letter-spacing:-.02em;color:var(--paper)}
+.logo .w{font-family:var(--font-head);font-weight:700;letter-spacing:.22em;font-size:13px;color:var(--paper)}
+.logo .tag{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;color:#9A9CA2;border-left:1px solid #3a3d45;padding-left:11px;margin-left:4px;text-transform:uppercase}
+.top-actions{display:flex;gap:var(--s2);align-items:center}
+.top .btn-ghost{color:#D8D9DC;border-color:#3a3d45}
+.top .btn-ghost:hover{border-color:var(--paper);color:var(--paper)}
+
+/* ============ NOTE BANNER ============ */
+.banner{background:var(--orange-wash);border-bottom:1px solid var(--orange-tint)}
+.banner .wrap{display:flex;gap:var(--s3);align-items:flex-start;padding:12px var(--s5)}
+.banner .ic{flex:0 0 auto;width:20px;height:20px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-size:12px;margin-top:1px}
+.banner p{font-size:13px;color:var(--orange-text);line-height:1.5}
+.banner b{font-family:var(--font-head);font-weight:700}
+.banner a{font-weight:600;border-bottom:1.5px solid var(--orange)}
+
+/* ============ STATS ============ */
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s3);margin:var(--s6) 0 var(--s5)}
+.stat{--vfl:13px;--vfw:2.5px;position:relative;background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--s5) var(--s4)}
+.stat .val{font-family:var(--font-display);font-size:32px;letter-spacing:-.02em;line-height:1}
+.stat .lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:7px}
+.stat.accent .val{color:var(--orange-deep)}
+.stat.brand .val{color:var(--teal-deep)}
+.stat.good .val{color:var(--good)}
+@media(min-width:720px){.stats{grid-template-columns:repeat(5,1fr)}}
+
+/* ============ TOOLBAR ============ */
+.toolbar{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:center;margin-bottom:var(--s5)}
+.search{flex:1 1 240px;position:relative;min-width:200px}
+.search input{width:100%;font-family:var(--font-body);font-size:14px;padding:11px 14px 11px 38px;border:1px solid var(--line);border-radius:var(--r-pill);background:var(--white);color:var(--ink)}
+.search input:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:transparent}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.filter{font-family:var(--font-head);font-weight:600;font-size:14px;padding:10px 14px;border:1px solid var(--line);border-radius:var(--r-pill);background:var(--white);color:var(--ink-2);cursor:pointer}
+.filter:focus{outline:2px solid var(--teal);outline-offset:1px}
+.toolbar .spacer{flex:1 1 auto}
+
+/* ============ LEAD LIST ============ */
+.list{display:grid;gap:var(--s3);padding-bottom:var(--s8)}
+.lead{--vfl:14px;--vfw:2.5px;position:relative;background:var(--white);border:1px solid var(--line);border-radius:var(--r-md);padding:var(--s5);display:grid;gap:var(--s4);grid-template-columns:1fr;box-shadow:var(--shadow)}
+.lead-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s3) var(--s4)}
+.lead-name{font-family:var(--font-head);font-weight:700;font-size:18px;color:var(--ink)}
+.lead-name .nameless{color:var(--muted-2);font-weight:500;font-style:italic}
+.lead-brand{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);font-weight:700}
+.lead-date{font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-left:auto}
+.lead-meta{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);font-size:13px}
+.lead-meta a{color:var(--ink-2);border-bottom:1px solid var(--line)}
+.lead-meta a:hover{color:var(--teal-deep);border-color:var(--teal)}
+.lead-meta .k{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);margin-right:5px}
+.lead-controls{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:center}
+.status-select{font-family:var(--font-head);font-weight:600;font-size:13px;padding:8px 14px;border-radius:var(--r-pill);border:1.5px solid var(--line);cursor:pointer;background:var(--white)}
+.status-select:focus{outline:2px solid var(--teal);outline-offset:1px}
+.status-select[data-s="new"]{background:var(--orange-wash);color:var(--orange-text);border-color:var(--orange-tint)}
+.status-select[data-s="contacted"]{background:var(--teal-wash);color:var(--teal-deep);border-color:var(--teal-tint)}
+.status-select[data-s="booked"]{background:var(--teal-deep);color:#fff;border-color:var(--teal-deep)}
+.status-select[data-s="delivered"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.status-select[data-s="won"]{background:#e6f4ec;color:var(--good);border-color:#bfe3cd}
+.status-select[data-s="lost"]{background:#f3f3f1;color:var(--muted);border-color:var(--line)}
+.notes{flex:1 1 220px;min-width:180px}
+.notes textarea{width:100%;font-family:var(--font-body);font-size:13px;padding:9px 12px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--surface);color:var(--ink-2);resize:vertical;min-height:38px;line-height:1.45}
+.notes textarea:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:transparent;background:var(--white)}
+.lead-controls .btn-danger{margin-left:auto}
+
+/* empty state */
+.empty{--vfl:24px;--vfw:3px;position:relative;background:var(--white);border:1px dashed var(--line);border-radius:var(--r-lg);padding:var(--s8) var(--s5);text-align:center}
+.empty h3{font-size:22px;margin-bottom:var(--s2)}
+.empty p{color:var(--ink-2);font-size:15px;max-width:42ch;margin:0 auto var(--s5)}
+.empty .grade-bar{width:64px;margin:0 auto var(--s5)}
+
+/* ============ GATE ============ */
+.gate{position:fixed;inset:0;background:var(--ink);display:grid;place-items:center;z-index:100;padding:var(--s5)}
+.gate-card{--vfc:var(--paper);--vfw:4px;--vfl:26px;position:relative;width:100%;max-width:400px;text-align:center;color:var(--paper)}
+.gate-logo{display:inline-flex;align-items:center;gap:11px;margin-bottom:var(--s6)}
+.gate-logo .b{--vfw:2.5px;--vfl:9px;--vfc:var(--paper);position:relative;padding:7px 9px}
+.gate-logo .n{font-family:var(--font-display);font-size:22px;color:var(--paper);line-height:.8}
+.gate-logo .w{font-family:var(--font-head);font-weight:700;letter-spacing:.22em;font-size:13px;color:var(--paper)}
+.gate h2{color:var(--paper);font-size:26px;margin-bottom:var(--s2)}
+.gate p{color:#C9CACE;font-size:14px;margin-bottom:var(--s5)}
+.gate input{width:100%;font-family:var(--font-body);font-size:15px;text-align:center;padding:14px 16px;border:1px solid #3a3d45;border-radius:var(--r-sm);background:#1f222a;color:var(--paper);letter-spacing:.04em}
+.gate input:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:transparent}
+.gate .btn{width:100%;margin-top:var(--s3)}
+.gate-err{font-family:var(--font-mono);font-size:12px;color:#FFB4A2;margin-top:var(--s3);min-height:16px}
+
+@media(max-width:520px){
+  .lead-date{margin-left:0;width:100%}
+  .lead-controls .btn-danger{margin-left:0}
+}
+.hidden{display:none!important}
+input[type=file]{display:none}
+</style>
+</head>
+<body>
+
+<!-- ============ PASSWORD GATE ============ -->
+<div class="gate" id="gate">
+  <form class="gate-card vf" id="gateForm"><span class="vf-b"></span>
+    <span class="gate-logo">
+      <span class="b vf"><span class="vf-b"></span><span class="n">48</span></span>
+      <span class="w">FRAMES</span>
+    </span>
+    <h2>Studio access</h2>
+    <p>Enter your passphrase to open the lead board.</p>
+    <input type="password" id="gateInput" placeholder="Passphrase" autocomplete="current-password" aria-label="Passphrase">
+    <button type="submit" class="btn btn-brand">Open the board</button>
+    <div class="gate-err" id="gateErr" role="alert"></div>
+  </form>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="48 Frames home">
+      <span class="b vf"><span class="vf-b"></span><span class="n">48</span></span>
+      <span class="w">FRAMES</span>
+      <span class="tag">Lead board</span>
+    </a>
+    <div class="top-actions">
+      <button class="btn btn-ghost" id="addTest" title="Add a sample lead to see how it works">+ Test lead</button>
+      <button class="btn btn-ghost" id="importBtn">Import</button>
+      <button class="btn btn-ghost" id="exportJson">Backup</button>
+      <button class="btn btn-primary" id="exportCsv">Export CSV</button>
+      <input type="file" id="importFile" accept="application/json,.json">
+    </div>
+  </div>
+</header>
+
+<!-- ============ SCOPE NOTE ============ -->
+<div class="banner">
+  <div class="wrap">
+    <span class="ic">i</span>
+    <p>These leads are stored <b>in this browser only</b>. Leads submitted on a visitor's own device save to <i>their</i> browser, not here — so use <b>Backup</b> to move data between your machines, and set <b>CRM_ENDPOINT</b> in <code>index.html</code> (steps in <a href="README.md">README</a>) to collect every visitor's lead in a Google Sheet.</p>
+  </div>
+</div>
+
+<!-- ============ BODY ============ -->
+<main class="wrap">
+
+  <div class="stats">
+    <div class="stat vf"><span class="vf-b"></span><div class="val" id="sTotal">0</div><div class="lbl">Total leads</div></div>
+    <div class="stat accent vf"><span class="vf-b"></span><div class="val" id="sNew">0</div><div class="lbl">New / uncontacted</div></div>
+    <div class="stat brand vf"><span class="vf-b"></span><div class="val" id="sActive">0</div><div class="lbl">In progress</div></div>
+    <div class="stat good vf"><span class="vf-b"></span><div class="val" id="sWon">0</div><div class="lbl">Won</div></div>
+    <div class="stat vf"><span class="vf-b"></span><div class="val" id="sWeek">0</div><div class="lbl">Last 7 days</div></div>
+  </div>
+
+  <div class="toolbar">
+    <div class="search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+      <input type="search" id="search" placeholder="Search name, brand, email, notes…" aria-label="Search leads">
+    </div>
+    <select class="filter" id="filter" aria-label="Filter by status">
+      <option value="all">All statuses</option>
+      <option value="new">New</option>
+      <option value="contacted">Contacted</option>
+      <option value="booked">Call booked</option>
+      <option value="delivered">Delivered</option>
+      <option value="won">Won</option>
+      <option value="lost">Lost</option>
+    </select>
+    <div class="spacer"></div>
+    <button class="btn btn-ghost" id="clearAll" title="Delete all leads in this browser">Clear all</button>
+  </div>
+
+  <div class="list" id="list"></div>
+
+</main>
+
+<script>
+(function(){
+  // ── CONFIG ───────────────────────────────────────────────
+  // Client-side gate. This is a deterrent, NOT real security — anyone
+  // who views source can read it. It just keeps the board from opening
+  // by accident. Change this to your own phrase.
+  const PASSPHRASE = "frames48";
+  const STORAGE_KEY = "48f_leads";
+  // ─────────────────────────────────────────────────────────
+
+  const STATUSES = [
+    ['new','New'],['contacted','Contacted'],['booked','Call booked'],
+    ['delivered','Delivered'],['won','Won'],['lost','Lost']
+  ];
+  const $ = s => document.querySelector(s);
+
+  /* ---------- gate ---------- */
+  const gate = $('#gate');
+  if (sessionStorage.getItem('48f_crm_open') === '1') gate.classList.add('hidden');
+  $('#gateForm').addEventListener('submit', e=>{
+    e.preventDefault();
+    if ($('#gateInput').value === PASSPHRASE){
+      sessionStorage.setItem('48f_crm_open','1');
+      gate.classList.add('hidden');
+      render();
+    } else {
+      $('#gateErr').textContent = 'That passphrase didn\u2019t match. Try again.';
+      $('#gateInput').select();
+    }
+  });
+
+  /* ---------- data ---------- */
+  function load(){
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
+    catch(e){ return []; }
+  }
+  function save(list){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+  }
+  let leads = load();
+
+  function update(id, patch){
+    leads = leads.map(l => l.id === id ? {...l, ...patch} : l);
+    save(leads);
+    renderStats(); // status changes can affect counts
+  }
+  function remove(id){
+    leads = leads.filter(l => l.id !== id);
+    save(leads);
+    render();
+  }
+
+  /* ---------- helpers ---------- */
+  function esc(s){ const d=document.createElement('div'); d.textContent=s==null?'':String(s); return d.innerHTML; }
+  function fmtDate(iso){
+    const d = new Date(iso);
+    if (isNaN(d)) return '—';
+    return d.toLocaleString(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+  }
+  function within7(iso){ return (Date.now() - new Date(iso).getTime()) <= 7*864e5; }
+  function utmString(l){
+    const parts = ['utm_source','utm_medium','utm_campaign'].map(k=>l[k]).filter(Boolean);
+    return parts.join(' · ');
+  }
+
+  /* ---------- stats ---------- */
+  function renderStats(){
+    const total = leads.length;
+    const nNew  = leads.filter(l=>l.status==='new').length;
+    const nAct  = leads.filter(l=>['contacted','booked','delivered'].includes(l.status)).length;
+    const nWon  = leads.filter(l=>l.status==='won').length;
+    const nWeek = leads.filter(l=>within7(l.createdAt)).length;
+    $('#sTotal').textContent  = total;
+    $('#sNew').textContent    = nNew;
+    $('#sActive').textContent = nAct;
+    $('#sWon').textContent    = nWon;
+    $('#sWeek').textContent   = nWeek;
+  }
+
+  /* ---------- render ---------- */
+  function filtered(){
+    const q = ($('#search').value || '').toLowerCase().trim();
+    const f = $('#filter').value;
+    return leads
+      .filter(l => f==='all' ? true : l.status===f)
+      .filter(l => !q ? true : [l.name,l.brand,l.email,l.notes].some(v => (v||'').toLowerCase().includes(q)))
+      .sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt));
+  }
+
+  function statusOptions(sel){
+    return STATUSES.map(([v,label])=>`<option value="${v}"${v===sel?' selected':''}>${label}</option>`).join('');
+  }
+
+  function render(){
+    renderStats();
+    const list = $('#list');
+    const rows = filtered();
+
+    if (leads.length === 0){
+      list.innerHTML = `<div class="empty vf"><span class="vf-b"></span>
+        <div class="grade-bar"></div>
+        <h3>No leads yet</h3>
+        <p>When someone books a free shoot on your site, they'll land here. Submit the form on the homepage, or add a test lead to see how it looks.</p>
+        <button class="btn btn-brand" id="emptyAdd">+ Add a test lead</button>
+      </div>`;
+      $('#emptyAdd').addEventListener('click', addTest);
+      return;
+    }
+    if (rows.length === 0){
+      list.innerHTML = `<div class="empty vf"><span class="vf-b"></span>
+        <h3>No matches</h3>
+        <p>No leads fit this search or filter. Clear it to see everyone.</p>
+      </div>`;
+      return;
+    }
+
+    list.innerHTML = rows.map(l => {
+      const utm = utmString(l);
+      const ref = l.referrer ? new URL(l.referrer).hostname.replace(/^www\./,'') : '';
+      return `<article class="lead vf" data-id="${esc(l.id)}"><span class="vf-b"></span>
+        <div class="lead-head">
+          <span class="lead-name">${l.name ? esc(l.name) : '<span class="nameless">No name given</span>'}</span>
+          ${l.brand ? `<span class="lead-brand">${esc(l.brand)}</span>` : ''}
+          <span class="lead-date">${fmtDate(l.createdAt)}</span>
+        </div>
+        <div class="lead-meta">
+          <span><span class="k">Email</span><a href="mailto:${esc(l.email)}">${esc(l.email)}</a></span>
+          ${utm ? `<span><span class="k">Source</span>${esc(utm)}</span>` : (ref ? `<span><span class="k">Referrer</span>${esc(ref)}</span>` : '')}
+        </div>
+        <div class="lead-controls">
+          <select class="status-select" data-s="${esc(l.status)}" aria-label="Status">${statusOptions(l.status)}</select>
+          <label class="notes"><textarea placeholder="Add a note — what they sell, next step…" rows="1">${esc(l.notes)}</textarea></label>
+          <button class="btn btn-danger" aria-label="Delete lead" title="Delete">Delete</button>
+        </div>
+      </article>`;
+    }).join('');
+
+    // wire row controls
+    list.querySelectorAll('.lead').forEach(card => {
+      const id = card.dataset.id;
+      const sel = card.querySelector('.status-select');
+      sel.addEventListener('change', () => { sel.dataset.s = sel.value; update(id, {status: sel.value}); });
+
+      const ta = card.querySelector('textarea');
+      const autosize = () => { ta.style.height='auto'; ta.style.height = ta.scrollHeight + 'px'; };
+      autosize();
+      let timer;
+      ta.addEventListener('input', () => {
+        autosize();
+        clearTimeout(timer);
+        timer = setTimeout(()=> update(id, {notes: ta.value}), 350);
+      });
+
+      card.querySelector('.btn-danger').addEventListener('click', () => {
+        if (confirm('Delete this lead? This can\u2019t be undone.')) remove(id);
+      });
+    });
+  }
+
+  /* ---------- toolbar actions ---------- */
+  $('#search').addEventListener('input', render);
+  $('#filter').addEventListener('change', render);
+
+  function addTest(){
+    const brands = ['Northwind Coffee','Hearth & Co.','Trailhead Goods','Lumen Skincare','Ridgeline Tools'];
+    const names  = ['Sam Rivera','Dana Cole','Alex Park','Jordan Lee','Casey Bowen'];
+    const i = Math.floor(Math.random()*brands.length);
+    const slug = brands[i].toLowerCase().replace(/[^a-z]+/g,'');
+    leads.push({
+      id:'L'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),
+      createdAt:new Date().toISOString(),
+      name:names[i], email:'hello@'+slug+'.com', brand:brands[i],
+      status:'new', notes:'', source:'test lead', referrer:'',
+      utm_source:'instagram', utm_medium:'paid', utm_campaign:'free_set'
+    });
+    save(leads); render();
+  }
+  $('#addTest').addEventListener('click', addTest);
+
+  $('#clearAll').addEventListener('click', () => {
+    if (!leads.length) return;
+    if (confirm('Delete ALL '+leads.length+' leads in this browser? Export a backup first if you want to keep them.')){
+      leads = []; save(leads); render();
+    }
+  });
+
+  /* ---------- export CSV ---------- */
+  function csvCell(v){ return '"' + String(v==null?'':v).replace(/"/g,'""') + '"'; }
+  $('#exportCsv').addEventListener('click', () => {
+    if (!leads.length){ alert('No leads to export yet.'); return; }
+    const cols = ['createdAt','name','brand','email','status','notes','utm_source','utm_medium','utm_campaign','referrer','source','id'];
+    const head = cols.join(',');
+    const body = leads
+      .slice().sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt))
+      .map(l => cols.map(c => csvCell(l[c])).join(',')).join('\n');
+    downloadBlob(head+'\n'+body, 'text/csv', '48frames-leads-'+stamp()+'.csv');
+  });
+
+  /* ---------- backup / restore JSON ---------- */
+  $('#exportJson').addEventListener('click', () => {
+    downloadBlob(JSON.stringify(leads,null,2), 'application/json', '48frames-leads-backup-'+stamp()+'.json');
+  });
+  $('#importBtn').addEventListener('click', () => $('#importFile').click());
+  $('#importFile').addEventListener('change', e => {
+    const file = e.target.files[0]; if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try{
+        const incoming = JSON.parse(reader.result);
+        if (!Array.isArray(incoming)) throw new Error('not a list');
+        const byId = {}; [...leads, ...incoming].forEach(l => { if (l && l.id) byId[l.id] = l; });
+        leads = Object.values(byId);
+        save(leads); render();
+        alert('Imported. You now have '+leads.length+' leads (duplicates merged by id).');
+      }catch(err){ alert('That file isn\u2019t a valid leads backup.'); }
+      e.target.value = '';
+    };
+    reader.readAsText(file);
+  });
+
+  function stamp(){ return new Date().toISOString().slice(0,10); }
+  function downloadBlob(text, type, filename){
+    const blob = new Blob([text], {type});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = filename; document.body.appendChild(a); a.click();
+    a.remove(); URL.revokeObjectURL(url);
+  }
+
+  // initial paint (if already unlocked this session)
+  if (sessionStorage.getItem('48f_crm_open') === '1') render();
+})();
+</script>
+</body>
+</html>

@@ -215,6 +215,11 @@ main section{padding:var(--s8) 0;scroll-margin-top:calc(var(--nav-h) + 8px)}
 .lead-form input::placeholder{color:#8a8d95}
 .lead-form input:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:transparent}
 .free .val{font-family:var(--font-mono);font-size:12px;color:var(--orange);margin-top:var(--s4);letter-spacing:.08em}
+.lead-form #hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+.lead-msg{font-family:var(--font-mono);font-size:12px;margin:0;text-align:left;letter-spacing:.02em}
+.lead-msg[data-kind="error"]{color:#FFB4A2}
+.lead-msg[data-kind="ok"]{color:var(--teal-tint)}
+.lead-form .btn[disabled]{opacity:.7;cursor:default;transform:none}
 
 /* ============ ABOUT ============ */
 .about .grid{display:grid;gap:var(--s6);margin-top:var(--s6)}
@@ -307,11 +312,13 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
     </div>
     <!-- HERO VISUAL — replace this graded placeholder with a real product shot:
          <img src="hero.jpg" alt="Product on a sunlit surface, studio-graded" loading="eager"> -->
-    <figure class="shot vf" role="img" aria-label="Sample graded product scene">
-      <span class="vf-b"></span>
-      <div class="timer"><span class="dot"></span>REC · 48:00:00</div>
-      <div class="label"><div class="k">YOUR PRODUCT,<br>GRADED</div><div class="s">Cool shadows · warm highlights</div></div>
-    </figure>
+   <figure class="shot vf">
+  <span class="vf-b"></span>
+  <img src="images/hero-product-shot.jpg"
+       alt="Your product on a sunlit surface, studio-graded"
+       loading="eager"
+       style="width:100%;height:100%;object-fit:cover;align-self:stretch;justify-self:stretch;display:block;">
+</figure>
   </div>
 </section>
 
@@ -443,11 +450,16 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
     <p class="eyebrow" style="color:var(--orange)">No commitment · no pitch</p>
     <h2 style="margin-top:12px">Your first set is on us.</h2>
     <p>Book a call, tell us about your brand, and we'll produce your first set — 10 photos and 3 videos — completely free. It's not a sales call. It's a working session, and you keep the assets whether you continue with us or not.</p>
-    <!-- Wire this to Formspree, Cal.com, or your CRM. Replace action="" with your endpoint. -->
-    <form class="lead-form" action="https://formspree.io/f/your-id" method="POST">
-      <input type="email" name="email" placeholder="you@yourbrand.com" required aria-label="Email">
-      <input type="text" name="brand" placeholder="Brand name" aria-label="Brand name">
-      <button type="submit" class="btn btn-accent">Claim my free set</button>
+    <!-- Captured by the baked-in CRM at the foot of this file (saved to this browser).
+         To ALSO collect leads across all visitors' devices, set CRM_ENDPOINT in that script. -->
+    <form class="lead-form" id="leadForm" novalidate>
+      <input type="text" name="name" placeholder="Your name" aria-label="Your name" autocomplete="name">
+      <input type="email" name="email" placeholder="you@yourbrand.com" required aria-label="Email" autocomplete="email">
+      <input type="text" name="brand" placeholder="Brand name" aria-label="Brand name" autocomplete="organization">
+      <!-- honeypot: invisible to people, bots tend to fill it -->
+      <input type="text" name="company_url" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" class="btn btn-accent" id="leadSubmit">Claim my free set</button>
+      <p class="lead-msg" id="leadMsg" role="alert" aria-live="polite" hidden></p>
     </form>
     <div class="val">A $199 VALUE · YOURS FREE, NO STRINGS</div>
   </div>
@@ -546,6 +558,115 @@ if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
   const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 }else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'))}
+</script>
+
+<!-- ============================================================
+     48 FRAMES — BAKED-IN CRM (lead capture + redirect)
+     Saves every booking to this browser (localStorage key "48f_leads")
+     so you can review them in crm.html. Optionally also POSTs each lead
+     to a Google Sheet / Formspree so you collect leads from EVERY
+     visitor's device — set CRM_ENDPOINT below (leave "" to skip).
+     ============================================================ -->
+<script>
+(function(){
+  // ── CONFIG ───────────────────────────────────────────────
+  // Leave "" for local-only capture. To collect leads across all
+  // visitors, paste a Google Apps Script web-app URL or a Formspree
+  // endpoint here. Setup steps are in README.md.
+  const CRM_ENDPOINT = "https://script.google.com/macros/s/AKfycbzzTy8x3kWIuRdNMSxxvKfps0T3a5gfc1MWGPTG0sIXmqp6gl2bM0fAa7UtCm-OJQmM/exec";
+  const STORAGE_KEY   = "48f_leads";
+  const REDIRECT      = "thank-you.html";
+  // ─────────────────────────────────────────────────────────
+
+  const form = document.getElementById('leadForm');
+  if (!form) return;
+  const btn  = document.getElementById('leadSubmit');
+  const msg  = document.getElementById('leadMsg');
+  const hp   = document.getElementById('hp');
+
+  function showMsg(text, kind){
+    if(!msg) return;
+    msg.textContent = text;
+    msg.dataset.kind = kind || 'error';
+    msg.hidden = false;
+  }
+  function validEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+  // pull marketing attribution from the URL (?utm_source=... etc.)
+  function utm(){
+    const p = new URLSearchParams(location.search), o = {};
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(k=>{
+      if(p.get(k)) o[k] = p.get(k);
+    });
+    return o;
+  }
+
+  function saveLocal(lead){
+    try{
+      const list = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      list.push(lead);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+      return true;
+    }catch(e){ return false; } // private mode / quota — don't block the user
+  }
+
+  async function sendRemote(lead){
+    if(!CRM_ENDPOINT) return;
+    try{
+      // text/plain keeps the request "simple" (no CORS preflight) so it
+      // works with Google Apps Script. Apps Script reads e.postData.contents.
+      const ctrl = new AbortController();
+      const t = setTimeout(()=>ctrl.abort(), 4000);
+      await fetch(CRM_ENDPOINT, {
+        method:'POST',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body: JSON.stringify(lead),
+        signal: ctrl.signal,
+        keepalive: true
+      });
+      clearTimeout(t);
+    }catch(e){ /* lead is already saved locally; never block the redirect */ }
+  }
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    if(msg) msg.hidden = true;
+
+    // spam trap
+    if(hp && hp.value.trim() !== ''){ window.location.href = REDIRECT; return; }
+
+    // read controls via form.elements — note form.name would return the
+    // form's own name attribute, not the input named "name".
+    const field = n => ((form.elements[n] && form.elements[n].value) || '').trim();
+
+    const email = field('email');
+    if(!validEmail(email)){
+      showMsg('Enter a valid email so we can send your set.', 'error');
+      form.elements['email'].focus();
+      return;
+    }
+
+    const lead = {
+      id:        'L' + Date.now().toString(36) + Math.random().toString(36).slice(2,6),
+      createdAt: new Date().toISOString(),
+      name:      field('name'),
+      email:     email,
+      brand:     field('brand'),
+      status:    'new',          // new → contacted → booked → delivered → won → lost
+      notes:     '',
+      source:    'index.html · free shoot form',
+      referrer:  document.referrer || '',
+      ...utm()
+    };
+
+    if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+
+    saveLocal(lead);
+    await sendRemote(lead);
+
+    window.location.href = REDIRECT + '?brand=' + encodeURIComponent(lead.brand || '');
+  });
+})();
 </script>
 </body>
 </html>
