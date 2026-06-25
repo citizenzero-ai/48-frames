@@ -140,21 +140,29 @@ main section{padding:var(--s8) 0;scroll-margin-top:calc(var(--nav-h) + 8px)}
 .hero .chips{display:flex;flex-wrap:wrap;gap:var(--s4);margin-top:var(--s6);font-family:var(--font-mono);font-size:12px;color:var(--muted);letter-spacing:.04em}
 .hero .chips b{color:var(--ink);font-family:var(--font-head);font-weight:700}
 /* hero visual */
-.shot{--vfw:4px;--vfl:26px;position:relative;border-radius:var(--r-md);overflow:hidden;aspect-ratio:4/5;display:grid;place-items:center;background:
-  radial-gradient(120% 90% at 75% 15%,rgba(237,139,43,.55),transparent 55%),
-  radial-gradient(120% 110% at 15% 95%,rgba(15,143,138,.7),transparent 55%),
-  linear-gradient(135deg,#1c2a2c,#243033)}
-.shot .pad{position:absolute;inset:18px}
-.shot .label{color:#fff;text-align:center;padding:var(--s5)}
-.shot .label .k{font-family:var(--font-display);font-size:clamp(26px,7vw,40px);letter-spacing:-.02em}
-.shot .label .s{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.8;margin-top:8px}
-.shot .timer{position:absolute;top:30px;left:30px;font-family:var(--font-mono);font-size:12px;color:#fff;background:rgba(0,0,0,.35);padding:5px 10px;border-radius:6px;display:flex;align-items:center;gap:7px}
-.shot .timer .dot{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+.ba{--vfw:4px;--vfl:26px;position:relative;border-radius:var(--r-md);overflow:hidden;aspect-ratio:4/5;background:#1c2a2c;user-select:none}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.ba .after-layer{position:absolute;inset:0;clip-path:inset(0 0 0 100%);animation:baWipe 4s ease-in-out infinite alternate;will-change:clip-path}
+.ba .divider{position:absolute;top:0;bottom:0;left:100%;width:2px;background:var(--paper);box-shadow:0 0 0 1px rgba(0,0,0,.22);animation:baSlide 4s ease-in-out infinite alternate;pointer-events:none;will-change:left}
+.ba .knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;background:var(--paper);box-shadow:var(--shadow)}
+.ba .knob::before,.ba .knob::after{content:"";position:absolute;top:50%;transform:translateY(-50%);width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent}
+.ba .knob::before{left:8px;border-right:7px solid var(--ink)}
+.ba .knob::after{right:8px;border-left:7px solid var(--ink)}
+.ba .tag{position:absolute;bottom:14px;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.5);padding:5px 11px;border-radius:var(--r-pill);backdrop-filter:blur(4px)}
+.ba .tag.before{left:14px}
+.ba .tag.after{right:14px;background:var(--teal-deep)}
+.ba .timer{position:absolute;top:16px;left:16px;font-family:var(--font-mono);font-size:12px;color:#fff;background:rgba(0,0,0,.45);padding:5px 10px;border-radius:6px;display:flex;align-items:center;gap:7px;z-index:3;letter-spacing:.04em}
+.ba .timer .dot{width:8px;height:8px;border-radius:50%;background:var(--orange);animation:baPulse 1.5s ease-in-out infinite}
+@keyframes baWipe{from{clip-path:inset(0 0 0 100%)}to{clip-path:inset(0 0 0 0)}}
+@keyframes baSlide{from{left:100%}to{left:0%}}
+@keyframes baPulse{0%,100%{opacity:1}50%{opacity:.3}}
+.ba:hover .after-layer,.ba:hover .divider{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.ba .after-layer{animation:none;clip-path:inset(0 0 0 50%)}.ba .divider{animation:none;left:50%}.ba .timer .dot{animation:none}}
 @media(min-width:880px){
   .hero .wrap{grid-template-columns:1.05fr .95fr;align-items:center;gap:var(--s8)}
   .hero .cta-row{flex-direction:row}
   .hero .cta-row .btn{width:auto}
-  .shot{aspect-ratio:4/5;max-width:440px;margin-left:auto}
+  .ba{aspect-ratio:4/5;width:440px;max-width:100%;margin-left:auto}
 }
 
 /* ============ PILLARS ============ */
@@ -310,15 +318,19 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
         <span><b>Unlimited</b> revisions</span>
       </div>
     </div>
-    <!-- HERO VISUAL — replace this graded placeholder with a real product shot:
-         <img src="hero.jpg" alt="Product on a sunlit surface, studio-graded" loading="eager"> -->
-   <figure class="shot vf">
-  <span class="vf-b"></span>
-  <img src="images/hero-product-shot.jpg"
-       alt="Your product on a sunlit surface, studio-graded"
-       loading="eager"
-       style="width:100%;height:100%;object-fit:cover;align-self:stretch;justify-self:stretch;display:block;">
-</figure>
+    <!-- HERO VISUAL — before/after reveal. Auto-animates; hover to pause.
+         Swap images by replacing hero-product-before.jpg / hero-product-shot.jpg in this folder. -->
+    <figure class="ba vf" aria-label="Before and after: the same rack before and after a 48 Frames shoot">
+      <span class="vf-b"></span>
+      <img class="before" src="images/hero-product-before.jpeg" alt="Before: the rack photographed in a plain showroom" loading="eager" decoding="async">
+      <div class="after-layer">
+        <img src="images/hero-product-after.jpg" alt="After: the same rack, studio-graded by 48 Frames" loading="eager" decoding="async">
+        <span class="tag after">After</span>
+      </div>
+      <span class="tag before">Before</span>
+      <div class="divider"><span class="knob"></span></div>
+      <div class="timer"><span class="dot"></span>48:00:00</div>
+    </figure>
   </div>
 </section>
 
@@ -345,37 +357,37 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
     <div class="gallery">
       <!-- PROJECT 1 — replace thumbs with real <img> + descriptive alt -->
       <article class="proj reveal">
-        <div class="cat">Beverage</div>
-        <h3>Brightwater Tonic</h3>
+        <div class="cat">Fitness</div>
+        <h3>Lethal Fitness</h3>
         <div class="thumbs">
-          <div class="thumb" style="background:radial-gradient(120% 100% at 30% 20%,rgba(237,139,43,.5),transparent),linear-gradient(135deg,#1f2d2e,#2c3a3c)"><span class="tag">Lifestyle</span></div>
-          <div class="thumb" style="background:linear-gradient(135deg,#e7e6e1,#cfceC7)"><span class="tag" style="background:rgba(0,0,0,.35)">Hero</span></div>
-          <div class="thumb" style="background:linear-gradient(135deg,#0f8f8a,#0b6e6a)"><span class="tag">In-use</span></div>
-          <div class="thumb" style="background:linear-gradient(135deg,#ed8b2b,#cf7318)"><span class="tag">Macro</span></div>
+          <a class="thumb" href="#"><img src="images/hero-product-lifestyle.jpg" alt="Lifestyle shot"><span class="tag">Lifestyle</span></a>
+<a class="thumb" href="#"><img src="images/hero-branded.jpg" alt="Hero product shot"><span class="tag" style="background:rgba(0,0,0,.35)">Hero</span></a>
+<a class="thumb" href="#"><img src="images/hero-detail.jpg" alt="Detail"><span class="tag">detail</span></a>
+<a class="thumb" href="#"><img src="images/hero-macro.jpg" alt="Macro detail"><span class="tag">Macro</span></a>
         </div>
         <div class="note">Three scenes · 12 hours</div>
       </article>
       <!-- PROJECT 2 -->
       <article class="proj reveal">
-        <div class="cat">Personal care</div>
-        <h3>Verena Body Oil</h3>
+        <div class="cat">Outdoor Products</div>
+        <h3>Rocket Stove</h3>
         <div class="thumbs">
-          <div class="thumb" style="background:linear-gradient(135deg,#e9e7e1,#d4d2cb)"><span class="tag" style="background:rgba(0,0,0,.35)">Hero</span></div>
-          <div class="thumb" style="background:radial-gradient(120% 100% at 70% 30%,rgba(15,143,138,.6),transparent),linear-gradient(135deg,#26322f,#33403c)"><span class="tag">Lifestyle</span></div>
-          <div class="thumb" style="background:linear-gradient(135deg,#ed8b2b,#d2731a)"><span class="tag">Macro</span></div>
-          <div class="thumb" style="background:linear-gradient(135deg,#0f8f8a,#0b6e6a)"><span class="tag">Detail</span></div>
+<a class="thumb" href="#"><img src="images/ys_hero.jpg" alt="Lifestyle shot"><span class="tag">Lifestyle</span></a>
+<a class="thumb" href="#"><img src="images/YSCS01_Lifestyle.jpg" alt="Hero product shot"><span class="tag" style="background:rgba(0,0,0,.35)">In Use</span></a>
+<a class="thumb" href="#"><img src="images/YSCS01_MAIN.jpg" alt="Product in use"><span class="tag">White Background</span></a>
+<a class="thumb" href="#"><img src="images/YSCS01_Lifestyle 2.jpg" alt="Macro detail"><span class="tag">Lifestyle</span></a>
         </div>
         <div class="note">Three scenes · 14 hours</div>
       </article>
       <!-- PROJECT 3 -->
       <article class="proj reveal">
-        <div class="cat">Pantry</div>
-        <h3>Wildgrain Granola</h3>
+        <div class="cat">Miscellaneous</div>
+        <h3>Dramatic Shots</h3>
         <div class="thumbs">
-          <div class="thumb" style="background:linear-gradient(135deg,#0f8f8a,#0b6e6a)"><span class="tag">Lifestyle</span></div>
-          <div class="thumb" style="background:linear-gradient(135deg,#ece9e2,#d2d0c8)"><span class="tag" style="background:rgba(0,0,0,.35)">Hero</span></div>
-          <div class="thumb" style="background:radial-gradient(120% 100% at 30% 70%,rgba(237,139,43,.55),transparent),linear-gradient(135deg,#222e2c,#2f3b38)"><span class="tag">Table</span></div>
-          <div class="thumb" style="background:linear-gradient(135deg,#ed8b2b,#cf7318)"><span class="tag">Macro</span></div>
+<a class="thumb" href="#"><img src="images/tools.jpg" alt="Lifestyle shot"><span class="tag">Tools</span></a>
+<a class="thumb" href="#"><img src="images/soda.jpg" alt="Hero product shot"><span class="tag" style="background:rgba(0,0,0,.35)">Epic Hero</span></a>
+<a class="thumb" href="#"><img src="images/sunshine.jpg" alt="Product in use"><span class="tag">Illustrations</span></a>
+<a class="thumb" href="#"><img src="images/flowers.jpg" alt="Macro detail"><span class="tag">Flash Photography</span></a>
         </div>
         <div class="note">Three scenes · 10 hours</div>
       </article>
@@ -573,7 +585,7 @@ if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
   // Leave "" for local-only capture. To collect leads across all
   // visitors, paste a Google Apps Script web-app URL or a Formspree
   // endpoint here. Setup steps are in README.md.
-  const CRM_ENDPOINT = "https://script.google.com/macros/s/AKfycbzzTy8x3kWIuRdNMSxxvKfps0T3a5gfc1MWGPTG0sIXmqp6gl2bM0fAa7UtCm-OJQmM/exec";
+  const CRM_ENDPOINT = "";
   const STORAGE_KEY   = "48f_leads";
   const REDIRECT      = "thank-you.html";
   // ─────────────────────────────────────────────────────────
