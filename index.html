@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ============ SEO ============ -->
-<title>48 Frames — Product Photos &amp; Video in 48 Hours</title>
+<title>48 Frames — Professional Photo &amp; Video Service</title>
 <meta name="description" content="Studio-quality product photos and video in 48 hours — no shipping, no studios, no five-figure invoices. Your first set is free. Starting at $499.">
 <link rel="canonical" href="https://48frames.co/"><!-- set your real domain -->
 <meta name="theme-color" content="#15171C">
 
 <!-- Open Graph / social -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="48 Frames — Product Photos &amp; Video in 48 Hours">
+<meta property="og:title" content="48 Frames — Professional Photo &amp; Video Service">
 <meta property="og:description" content="Pro-grade product photos and video, delivered in 48 hours. No studio. No shipping. From $499.">
 <meta property="og:url" content="https://48frames.co/">
 <meta property="og:image" content="https://48frames.co/og-image.jpg"><!-- add a 1200x630 share image -->
@@ -214,6 +214,15 @@ main section{padding:var(--s8) 0;scroll-margin-top:calc(var(--nav-h) + 8px)}
 .byo a{color:var(--teal-deep);font-weight:600;border-bottom:2px solid var(--orange)}
 @media(min-width:760px){.tiers{grid-template-columns:repeat(3,1fr);align-items:stretch}}
 
+/* ============ ROI CALLOUT ============ */
+.callout{max-width:var(--container);margin:var(--s7) auto 0;padding:0 var(--s5)}
+.callout-inner{position:relative;text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:var(--s8) var(--s5);overflow:hidden}
+.callout-inner::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--grade)}
+.callout .eyebrow{color:var(--teal-deep)}
+.callout h2{font-size:clamp(26px,6vw,40px);margin:var(--s3) auto var(--s4);max-width:20ch}
+.callout h2 .hl{color:var(--orange-deep)}
+.callout p{max-width:52ch;margin:0 auto;font-size:16px;color:var(--ink-2)}
+
 /* ============ FREE OFFER ============ */
 .free{--vfc:var(--paper);--vfw:4px;--vfl:30px;background:var(--ink);color:var(--paper);border-radius:var(--r-lg);position:relative;padding:var(--s8) var(--s5);text-align:center;margin:0 auto;max-width:var(--container)}
 .free h2{font-size:clamp(28px,7vw,42px)}
@@ -287,7 +296,7 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
     </nav>
-    <a href="#free" class="btn btn-brand nav-cta">Get 1 FREE Rendering</a>
+    <a href="#free" class="btn btn-brand nav-cta">Get a FREE Rendering</a>
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -305,11 +314,11 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
 <section class="hero" aria-label="Intro">
   <div class="wrap">
     <div>
-      <p class="eyebrow">Product photo + video studio</p>
+      <p class="eyebrow">From Snapshot to Showroom Ready</p>
       <h1>4k Renderings — <span class="hl">delivered in 48 hours.</span></h1>
-      <p class="sub">We turn cellphone images into your best sales tool! Photorealistic renderings to go along with you job quotes.</p>
+      <p class="sub">We turn cellphone images into your best sales tool! Photorealistic renderings to go along with your job quotes.</p>
       <div class="cta-row">
-        <a href="#free" class="btn btn-primary">Get 1 free rendering</a>
+        <a href="#free" class="btn btn-primary">Get a free rendering</a>
         <a href="#how" class="btn btn-ghost">See how it works</a>
       </div>
       <div class="chips">
@@ -425,30 +434,39 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
       <div class="tier reveal">
         <div class="pk">Starter</div>
         <div class="desc">Up to 5 images × 1 Project or Scene</div>
-        <div class="amt"><span class="price" data-once="499" data-month="449">$175</span></div>
+        <div class="amt"><span class="price" data-once="175" data-month="449">$175</span></div>
         <div class="per">1 Project • Up to 5 images</div>
         <ul><li>48-hour delivery</li><li>2 revisions</li><li>Full commercial rights</li></ul>
         <a href="#free" class="btn btn-ghost">Get started</a>
       </div>
-      <div class="tier feat vf reveal"><span class="vf-b"></span>
+      <div class="tier feat reveal">
         <div class="pop">Most popular</div>
         <div class="pk">Growth</div>
         <div class="desc">Up to 5 images + (1) 4k Video × 1 Project or Scene</div>
         <div class="amt"><span class="price" data-once="899" data-month="799">$300</span></div>
         <div class="per">1 Project • Up to 5 photos + (1) 10 second 4k video</div>
-        <ul><li>48-hour delivery</li><li>Unlimited revisions</li><li>Full commercial rights</li><li>Priority queue</li></ul>
+        <ul><li>48-hour delivery</li><li>2 revisions</li><li>Full commercial rights</li><li>Priority queue</li></ul>
         <a href="#free" class="btn btn-brand">Get started</a>
       </div>
       <div class="tier reveal">
         <div class="pk">Retainer</div>
         <div class="desc">Up to 10 Projects/month</div>
         <div class="amt"><span class="price" data-once="1249" data-month="1099">$1,500/month</span></div>
-        <div class="per">10 Projects • 50 photos + 10 4k videos</div>
+        <div class="per">10 Projects • Up to 50 photos + (10) 4k videos</div>
         <ul><li>48-hour delivery</li><li>Unlimited revisions</li><li>Full commercial rights</li><li>Priority queue</li></ul>
         <a href="#free" class="btn btn-ghost">Get started</a>
       </div>
     </div>
     <p class="byo">Need something custom? <a href="#free">Build your own pack →</a></p>
+  </div>
+</section>
+
+<!-- ============ ROI CALLOUT ============ -->
+<section class="callout" aria-label="Return on investment">
+  <div class="callout-inner reveal">
+    <p class="eyebrow">Do the math</p>
+    <h2>What's one more closed job worth to you <span class="hl">per month?</span></h2>
+    <p>For most contractors, a single extra job pays for a full year of renders. If one photorealistic before/after helps you close just one more project a month, everything above pays for itself — the rest is profit.</p>
   </div>
 </section>
 
@@ -480,7 +498,7 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
       <div class="grade-bar"></div>
       <p class="eyebrow">About</p>
       <h2>Built for companies that punch above their weight.</h2>
-      <p>The speed and accuracy of this service is something thats VERY new and exciting! — I blend 10 years of professional B2B graphic design and photography experience with state of the art rendering tools so you can close the deal. <!-- Swap in your real founder story here. --></p>
+      <p>I blend 10 years of professional B2B graphic design, photography and marketing experience with state of the art design tools so you can close the deal. The speed and accuracy of this service is something thats VERY new and exciting!<!-- Swap in your real founder story here. --></p>
     </div>
     <div class="grid">
       <div class="card reveal"><h4>Agency quality</h4><p>The polish of a $10k shoot without the $10k cost — 4k images and 4k video.</p></div>
