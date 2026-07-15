@@ -90,16 +90,6 @@ p{color:var(--ink-2)}
 .share-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-head);font-weight:600;font-size:14px;padding:11px 20px;border-radius:var(--r-pill);border:1.5px solid var(--line);color:var(--ink-2);transition:.15s var(--ease)}
 .share-link:hover{border-color:var(--ink);color:var(--ink);background:var(--surface)}
 
-/* what's included reminder */
-.included{background:var(--ink);border-radius:var(--r-lg);padding:var(--s7) var(--s5);margin-top:var(--s6);text-align:center;--vfc:var(--paper);--vfw:3px;--vfl:22px}
-.included h3{font-size:22px;color:var(--paper);margin-bottom:var(--s2)}
-.included .desc{font-size:15px;color:#E2E3E6;margin-bottom:var(--s5);max-width:46ch;margin-left:auto;margin-right:auto}
-.included-grid{display:grid;gap:var(--s3);grid-template-columns:repeat(2,1fr)}
-.inc-item{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-md);padding:var(--s4)}
-.inc-item .val{font-family:var(--font-display);font-size:28px;color:var(--paper);letter-spacing:-.02em}
-.inc-item .lbl{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#C9CACE;margin-top:4px}
-@media(min-width:480px){.included-grid{grid-template-columns:repeat(4,1fr)}}
-
 /* footer */
 footer{background:var(--ink);padding:var(--s6) 0;text-align:center}
 .grade-bar.full{width:100%;height:3px;border-radius:0;margin-bottom:var(--s5)}
@@ -119,7 +109,6 @@ footer a{color:#D8D9DC;border-bottom:1px solid rgba(255,255,255,.2)}
 .confirm-inner>.steps-mini{animation-delay:.26s}
 .confirm-inner>.cta-row{animation-delay:.32s}
 .confirm-inner>.share{animation-delay:.36s}
-.confirm-inner>.included{animation-delay:.42s}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 
 /* countdown timer */
@@ -152,23 +141,22 @@ footer a{color:#D8D9DC;border-bottom:1px solid rgba(255,255,255,.2)}
       </svg>
     </div>
 
-    <p class="eyebrow">You're confirmed</p>
-    <h1>Your free shoot<br>is booked.</h1>
+    <h1>You're confirmed</h1>
     <p class="sub"><span id="greet"></span>We've got your details. Expect an email from us within one business hour to lock in the kickoff call. In the meantime, here's what happens next.</p>
 
     <!-- what to expect -->
     <div class="steps-mini">
       <div class="step-mini vf"><span class="vf-b"></span>
         <div class="ico t">01</div>
-        <div class="body"><h4>Check your inbox</h4><p>A confirmation is on its way. Look for an email from hello@48frames.co with your call link.</p></div>
+        <div class="body"><h4>Check your inbox</h4><p>Look for an email from four8frames@gmail.com, we'll need more context before starting your project.</p></div>
       </div>
       <div class="step-mini vf"><span class="vf-b"></span>
         <div class="ico o">02</div>
-        <div class="body"><h4>Kickoff call</h4><p>We'll learn your brand, walk you through scene options, and gather the images you already have.</p></div>
+        <div class="body"><h4>Kickoff call</h4><p>We'll learn about your service and gather the images you already have.</p></div>
       </div>
       <div class="step-mini vf"><span class="vf-b"></span>
         <div class="ico i">03</div>
-        <div class="body"><h4>Get your set</h4><p>48–72 hours later, your photos and videos are in your inbox — ready to use, no strings attached.</p></div>
+        <div class="body"><h4>Get your set</h4><p>48 hours later, your photos will be in your inbox — ready to use, no strings attached.</p></div>
       </div>
     </div>
 
@@ -182,18 +170,6 @@ footer a{color:#D8D9DC;border-bottom:1px solid rgba(255,255,255,.2)}
     <div class="cta-row">
       <a href="index.html" class="btn btn-primary">Back to 48 Frames</a>
       <a href="index.html#pricing" class="btn btn-ghost">Explore packs</a>
-    </div>
-
-    <!-- what's included reminder -->
-    <div class="included vf"><span class="vf-b"></span>
-      <h3>What's included in your free set</h3>
-      <p class="desc">You asked for it — here's exactly what we'll deliver, on us.</p>
-      <div class="included-grid">
-        <div class="inc-item"><div class="val">10</div><div class="lbl">Photos</div></div>
-        <div class="inc-item"><div class="val">3</div><div class="lbl">Videos</div></div>
-        <div class="inc-item"><div class="val">3</div><div class="lbl">Scenes</div></div>
-        <div class="inc-item"><div class="val">∞</div><div class="lbl">Revisions</div></div>
-      </div>
     </div>
 
     <!-- share nudge -->
@@ -224,7 +200,7 @@ footer a{color:#D8D9DC;border-bottom:1px solid rgba(255,255,255,.2)}
   <div class="wrap">
     <div class="grade-bar full"></div>
     <p><b>48 FRAMES</b> — EVERY PRODUCT DESERVES A GREAT FRAME · 2026</p>
-    <p style="margin-top:8px"><a href="index.html">Home</a> · <a href="mailto:hello@48frames.co">hello@48frames.co</a></p>
+    <p style="margin-top:8px"><a href="index.html">Home</a> · <a href="mailto:four8frames@gmail.com">four8frames@gmail.com</a></p>
   </div>
 </footer>
 
