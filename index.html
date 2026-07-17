@@ -90,6 +90,8 @@ em{font-style:normal;color:var(--teal-deep);font-weight:600}
 .vf::after{bottom:0;right:0;border-left:0;border-top:0}
 .vf>.vf-b::before{top:0;right:0;border-left:0;border-bottom:0}
 .vf>.vf-b::after{bottom:0;left:0;border-right:0;border-top:0}
+/* hero viewfinder: drop the bottom-right corner bracket only */
+.ba.vf::after{content:none}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-head);font-weight:600;font-size:15px;border-radius:var(--r-pill);padding:14px 24px;border:2px solid transparent;cursor:pointer;transition:transform .15s var(--ease),background .15s var(--ease);text-align:center}
@@ -243,6 +245,19 @@ main section{padding:var(--s8) 0;scroll-margin-top:calc(var(--nav-h) + 8px)}
 .lead-msg[data-kind="error"]{color:#FFB4A2}
 .lead-msg[data-kind="ok"]{color:var(--teal-tint)}
 .lead-form .btn[disabled]{opacity:.7;cursor:default;transform:none}
+/* photo + project details sub-section inside the free card */
+.lead-upload{max-width:420px;margin:var(--s5) auto 0;padding-top:var(--s5);border-top:1px solid #3a3d45;text-align:left}
+.lead-upload .up-head{font-family:var(--font-head);font-weight:600;font-size:15px;color:var(--paper);margin:0 0 2px}
+.lead-upload .up-sub{font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;color:#8a8d95;margin:0 0 var(--s3)}
+.file-row{display:flex;align-items:center;gap:var(--s3);flex-wrap:wrap;margin-bottom:var(--s3)}
+.file-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-head);font-weight:600;font-size:14px;padding:11px 18px;border-radius:var(--r-pill);background:#1f222a;color:var(--paper);border:1px solid #3a3d45;cursor:pointer;transition:border-color .15s,background .15s}
+.file-btn:hover{border-color:var(--teal);background:#242832}
+.file-btn svg{width:16px;height:16px}
+.file-name{font-family:var(--font-mono);font-size:12px;color:var(--teal-tint);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:210px}
+.file-input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
+.lead-form textarea{font-family:var(--font-body);font-size:15px;padding:14px 16px;border:1px solid #3a3d45;border-radius:var(--r-sm);background:#1f222a;color:var(--paper);resize:vertical;min-height:96px;width:100%}
+.lead-form textarea::placeholder{color:#8a8d95}
+.lead-form textarea:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:transparent}
 
 /* ============ ABOUT ============ */
 .about .grid{display:grid;gap:var(--s6);margin-top:var(--s6)}
@@ -322,14 +337,13 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
     <div>
       <p class="eyebrow">From Snapshot to Showroom Ready</p><br>
       <h1>Job Site Renderings — <span class="hl"><br>in 48 hours.</span></h1>
-      <p class="sub">We turn cellphone images into your best sales tool! Photorealistic renderings to go along with your job quotes.</p>
+      <p class="sub">We turn cellphone images into your best sales tool! Show your clients a before-and-after within 2 days of their call.</p>
       <div class="cta-row">
         <a href="#free" class="btn btn-primary">Get a free rendering</a>
         <a href="#how" class="btn btn-ghost">See how it works</a>
       </div>
       <div class="chips">
-        <span><b>4k</b> Images | </span>
-        <span><b>Up to 5 photos</b> per project | </span>
+        <span><b>Up to (5) 4k images</b> per project  | </span>
         <span><b>4k Video</b> Available</span>
       </div>
     </div>
@@ -366,14 +380,13 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
     <div class="shead reveal">
       <div class="grade-bar"></div>
       <p class="eyebrow">Selected work</p>
-      <h2>See what 48 hours looks like.</h2>
-      <p>We work across multiple industries — <br>Decking, Landscaping, Concrete, Pools, Patios and more.</p>
+      <h2>See it before you build it.</h2>
+      <p>We work across multiple industries — <br>Decking, Landscaping, Concrete, Pools, Patios, Painting and more.</p>
     </div>
     <div class="gallery">
       <!-- PROJECT 1 — replace thumbs with real <img> + descriptive alt -->
       <article class="proj reveal">
-        <div class="cat">Landscaping</div>
-        <h3>Soft + Hardscaping</h3>
+        <h3>Landscaping</h3>
         <div class="thumbs">
           <a class="thumb" href="#"><img src="images/porch-before.jpeg" alt="Lifestyle shot"><span class="tag">Original</span></a>
 <a class="thumb" href="#"><img src="images/porch-after.jpeg" alt="Hero product shot"><span class="tag" style="background:rgba(0,0,0,.35)">Version 1</span></a>
@@ -384,8 +397,7 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
       </article>
       <!-- PROJECT 2 -->
       <article class="proj reveal">
-        <div class="cat">Construction</div>
-        <h3>Concrete</h3>
+        <h3>Concrete + Pavers</h3>
         <div class="thumbs">
 <a class="thumb" href="#"><img src="images/driveway-before.jpeg" alt="Lifestyle shot"><span class="tag">Original</span></a>
 <a class="thumb" href="#"><img src="images/driveway-after.jpeg" alt="Hero product shot"><span class="tag" style="background:rgba(0,0,0,.35)">Version 1</span></a>
@@ -396,7 +408,6 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
       </article>
       <!-- PROJECT 3 -->
       <article class="proj reveal">
-        <div class="cat">Construction</div>
         <h3>Decking</h3>
         <div class="thumbs">
 <a class="thumb" href="#"><img src="images/deck-before.jpeg" alt="Lifestyle shot"><span class="tag">Original</span></a>
@@ -420,8 +431,8 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
     </div>
     <div class="steps">
       <div class="step vf reveal"><span class="vf-b"></span><div class="n">01</div><h3>Send us your images</h3><p>Send us up to 5 images per project, any modern cellphone image will work. Clear and well lit images will give better results.</p></div>
-      <div class="step vf reveal"><span class="vf-b"></span><div class="n">02</div><h3>Project Context</h3><p>Give us as much information as possible into the project. Materials, colors, shapes, vibe, etc.</p></div>
-      <div class="step vf reveal"><span class="vf-b"></span><div class="n">03</div><h3>Done</h3><p>Give us 48 hours to rendering and clean up your images and we'll deliver you 4k goodness to present to your clients.</p></div>
+      <div class="step vf reveal"><span class="vf-b"></span><div class="n">02</div><h3>Project Context</h3><p>Give us as much information as possible into the project. Rough dimensions, materials, colors, shapes, vibe, etc.</p></div>
+      <div class="step vf reveal"><span class="vf-b"></span><div class="n">03</div><h3>Done</h3><p>Give us 48 hours to render and clean up your images and we'll deliver you 4k goodness to present to your clients.</p></div>
     </div>
   </div>
 </section>
@@ -463,7 +474,7 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
         <a href="#free" class="btn btn-ghost">Get started</a>
       </div>
     </div>
-    <p class="byo">Need something custom? <a href="#free">Build your own pack →</a></p>
+    <p class="byo">Need something custom? <a href="#free">Lets figure it out →</a></p>
   </div>
 </section>
 
@@ -482,12 +493,20 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
     <p class="eyebrow" style="color:var(--orange)">No commitment · no pitch</p>
     <h2 style="margin-top:12px">Your first set is on us.</h2>
     <p>Book a call, tell us about your project, and we'll produce your first set — Up to 5 photos — completely free. It's not a sales call. It's a working session, and you keep the assets whether you continue with us or not.</p>
-    <!-- Captured by the baked-in CRM at the foot of this file (saved to this browser).
-         To ALSO collect leads across all visitors' devices, set CRM_ENDPOINT in that script. -->
+    <!-- Captured by the baked-in CRM at the foot of this file (saved to this browser)
+         and forwarded to your inbox via Formspree (CRM_ENDPOINT in that script). -->
     <form class="lead-form" id="leadForm" novalidate>
       <input type="text" name="name" placeholder="Your name" aria-label="Your name" autocomplete="name">
       <input type="email" name="email" placeholder="you@yourbrand.com" required aria-label="Email" autocomplete="email">
-      <input type="text" name="brand" placeholder="Brand name" aria-label="Brand name" autocomplete="organization">
+      <input type="text" name="brand" placeholder="Company name" aria-label="Company name" autocomplete="organization">
+
+      <!-- ── project details ─────────────────────── -->
+      <div class="lead-upload">
+        <p class="up-head">Tell me about the job</p>
+        <p class="up-sub">THE MORE DETAIL, THE BETTER YOUR RENDER</p>
+        <textarea name="project" id="leadProject" placeholder="Tell me about the job — the space, the finish you're picturing, and anything you want to see in the render." aria-label="Project details"></textarea>
+      </div>
+
       <!-- honeypot: invisible to people, bots tend to fill it -->
       <input type="text" name="company_url" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button type="submit" class="btn btn-accent" id="leadSubmit">Give me free stuff!</button>
@@ -537,8 +556,8 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
 <section class="final">
   <div class="wrap reveal">
     <div class="grade-bar" style="margin:0 auto var(--s4)"></div>
-    <h2>Ready to see your product<br>in a new light?</h2>
-    <p>Book a free shoot — a $175 value. No card, no commitment. Just see what we can do with your brand.</p>
+    <h2>Ready to stand out from<br>your competition?</h2>
+    <p>Send me photos of your next job site and we'll work our magic. No card, no commitment.</p>
     <a href="#free" class="btn btn-brand">Lets get started</a>
   </div>
 </section>
@@ -554,7 +573,7 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
           <span class="b vf"><span class="vf-b"></span><span class="n">48</span></span>
           <span class="w">FRAMES</span>
         </a>
-        <p>A product photo + video studio for small brands. Studio-grade. In 48 hours.</p>
+        <p>From Snap Shot to Showroom Ready in 48 hours.</p>
       </div>
       <div class="col"><h5>Studio</h5><a href="#work">Work</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#about">About</a></div>
       <div class="col"><h5>Contact</h5><a href="mailto:four8frames@gmail.com">four8frames@gmail.com</a><a href="#free">Book a free shoot</a></div>
@@ -562,7 +581,7 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
     </div>
     <div class="grade-bar"></div>
     <div class="legal">
-      <span>© 2026 48 FRAMES · EVERY PRODUCT DESERVES A GREAT FRAME</span>
+      <span>© 2026 • 48 FRAMES</span>
       <span><a href="#">Privacy</a> · <a href="#">Terms</a></span>
     </div>
   </div>
@@ -584,16 +603,14 @@ if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
 <!-- ============================================================
      48 FRAMES — BAKED-IN CRM (lead capture + redirect)
      Saves every booking to this browser (localStorage key "48f_leads")
-     so you can review them in crm.html. Optionally also POSTs each lead
-     to a Google Sheet / Formspree so you collect leads from EVERY
-     visitor's device — set CRM_ENDPOINT below (leave "" to skip).
+     so you can review them in crm.html. Also POSTs each lead to Formspree
+     (CRM_ENDPOINT below) so you collect leads from EVERY visitor's device.
      ============================================================ -->
 <script>
 (function(){
   // ── CONFIG ───────────────────────────────────────────────
-  // Leave "" for local-only capture. To collect leads across all
-  // visitors, paste a Google Apps Script web-app URL or a Formspree
-  // endpoint here. Setup steps are in README.md.
+  // Formspree endpoint that forwards each lead to your inbox. Leave ""
+  // for local-only capture. Setup steps are in README.md.
   const CRM_ENDPOINT = "https://formspree.io/f/mrenbjln";
   const STORAGE_KEY   = "48f_leads";
   const REDIRECT      = "thank-you.html";
@@ -635,7 +652,7 @@ if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     if(!CRM_ENDPOINT) return;
     try{
       // text/plain keeps the request "simple" (no CORS preflight) so it
-      // works with Google Apps Script. Apps Script reads e.postData.contents.
+      // works with Google Apps Script too. Formspree reads the JSON body.
       const ctrl = new AbortController();
       const t = setTimeout(()=>ctrl.abort(), 4000);
       await fetch(CRM_ENDPOINT, {
@@ -673,6 +690,7 @@ if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
       name:      field('name'),
       email:     email,
       brand:     field('brand'),
+      project:   field('project'),          // what they want rendered
       status:    'new',          // new → contacted → booked → delivered → won → lost
       notes:     '',
       source:    'index.html · free shoot form',
