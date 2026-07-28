@@ -333,6 +333,70 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
+
+/* ============ INTERACTIVE DEMO ============ */
+.demo{background:var(--surface)}
+.demo .shead{margin-bottom:var(--s6)}
+.fd{position:relative;background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden}
+.fd-grid{display:grid;gap:0}
+@media(min-width:900px){.fd-grid{grid-template-columns:minmax(300px,380px) 1fr}}
+.fd-controls{padding:var(--s6) var(--s5);border-bottom:1px solid var(--line)}
+@media(min-width:900px){.fd-controls{border-bottom:0;border-right:1px solid var(--line)}}
+.fd-block{margin-top:var(--s5)}
+.fd-block:first-child{margin-top:0}
+.fd-step{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.fd-step .i{color:var(--orange-text)}
+.fd-trades{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.fd-trade{font-family:var(--font-head);font-weight:700;font-size:14px;padding:14px 6px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--surface);color:var(--ink);cursor:pointer;transition:.15s var(--ease)}
+.fd-trade:hover{border-color:var(--ink-2)}
+.fd-trade.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.fd-styles{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:10px}
+.fd-style{font-family:var(--font-body);font-weight:600;font-size:13px;text-align:left;padding:11px 12px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--white);color:var(--ink);cursor:pointer;transition:.15s var(--ease)}
+.fd-style:hover{border-color:var(--orange)}
+.fd-style.on{background:var(--orange);color:var(--ink);border-color:var(--orange)}
+.fd-finishes{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.fd-finish{font-family:var(--font-mono);font-size:12px;padding:7px 12px;border:1px solid var(--line);border-radius:var(--r-pill);background:var(--white);color:var(--ink);cursor:pointer;transition:.15s var(--ease)}
+.fd-finish:hover{border-color:var(--teal)}
+.fd-finish.on{background:var(--teal-deep);color:#fff;border-color:var(--teal-deep)}
+.fd-upload{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:10px}
+.fd-uploadbtn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-head);font-weight:600;font-size:13px;padding:10px 16px;border-radius:var(--r-pill);background:var(--surface);border:1px solid var(--line);color:var(--ink);cursor:pointer;transition:.15s}
+.fd-uploadbtn:hover{border-color:var(--teal)}
+.fd-uploadbtn svg{width:15px;height:15px}
+.fd-fname{font-family:var(--font-mono);font-size:12px;color:var(--teal-deep);max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fd-file{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.fd-generate{margin-top:var(--s6);width:100%;font-family:var(--font-head);font-weight:700;font-size:15px;color:#fff;border:0;border-radius:var(--r-pill);padding:15px;cursor:pointer;background:var(--grade);transition:transform .15s var(--ease),opacity .15s}
+.fd-generate:hover{transform:translateY(-1px)}
+.fd-generate:disabled{opacity:.5;cursor:default;transform:none}
+.fd-viewer{padding:var(--s6) var(--s5);display:flex;flex-direction:column;gap:var(--s4)}
+.fd-ba{--pos:100%;position:relative;aspect-ratio:4/3;border-radius:var(--r-md);overflow:hidden;background:#1c2a2c;user-select:none;touch-action:none}
+.fd-ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.fd-after-layer{position:absolute;inset:0;clip-path:inset(0 0 0 var(--pos))}
+.fd-ba.anim .fd-after-layer{transition:clip-path .9s var(--ease)}
+.fd-after-layer.sim img{filter:saturate(1.16) contrast(1.06) brightness(1.05)}
+.fd-divider,.fd-knob,.fd-tag.a{opacity:0;transition:opacity .3s}
+.fd-ba.done .fd-divider,.fd-ba.done .fd-knob,.fd-ba.done .fd-tag.a{opacity:1}
+.fd-divider{position:absolute;top:0;bottom:0;left:var(--pos);width:2px;background:var(--paper);box-shadow:0 0 0 1px rgba(0,0,0,.22);pointer-events:none;z-index:2}
+.fd-knob{position:absolute;top:50%;left:var(--pos);transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:var(--paper);box-shadow:var(--shadow);cursor:ew-resize;z-index:3}
+.fd-knob:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.fd-knob::before,.fd-knob::after{content:"";position:absolute;top:50%;transform:translateY(-50%);width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent}
+.fd-knob::before{left:9px;border-right:7px solid var(--ink)}
+.fd-knob::after{right:9px;border-left:7px solid var(--ink)}
+.fd-tag{position:absolute;bottom:12px;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.5);padding:5px 10px;border-radius:var(--r-pill);backdrop-filter:blur(4px);z-index:2}
+.fd-tag.b{left:12px}
+.fd-tag.a{right:12px;background:var(--teal-deep)}
+.fd-badge{position:absolute;top:12px;right:12px;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--orange-tint);border:1px solid var(--orange);padding:4px 9px;border-radius:var(--r-pill);z-index:4}
+.fd-overlay{position:absolute;inset:0;display:grid;place-items:center;background:rgba(21,23,28,.5);backdrop-filter:blur(2px);z-index:5;color:#fff;text-align:center;padding:20px;transition:opacity .3s}
+.fd-overlay[hidden]{display:none}
+.fd-overlay .msg{font-family:var(--font-head);font-weight:700;font-size:16px}
+.fd-overlay .bar{margin:12px auto 0;width:180px;height:4px;border-radius:99px;background:rgba(255,255,255,.25);overflow:hidden}
+.fd-overlay .bar>i{display:block;height:100%;width:0;background:var(--orange)}
+.fd-scan{position:absolute;left:0;right:0;height:36%;top:-40%;background:linear-gradient(180deg,transparent,rgba(15,143,138,.4),transparent);z-index:4;pointer-events:none;opacity:0}
+.fd-ba.working .fd-scan{opacity:1;animation:fdscan 1.1s ease-in-out infinite}
+@keyframes fdscan{0%{top:-40%}100%{top:100%}}
+.fd-cap{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--font-mono);font-size:12px;color:var(--ink-2)}
+.fd-cap .sel{color:var(--ink);font-weight:700;letter-spacing:.02em}
+.fd-note{font-family:var(--font-mono);font-size:11px;color:var(--muted);letter-spacing:.02em;margin-top:2px}
+@media(prefers-reduced-motion:reduce){.fd-ba.anim .fd-after-layer{transition:none}.fd-ba.working .fd-scan{animation:none}}
 </style>
 </head>
 <body>
@@ -346,6 +410,7 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="#work">Work</a>
+      <a href="#demo">Live demo</a>
       <a href="#how">How it works</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
@@ -356,6 +421,7 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
 </header>
 <div class="mobile-menu" id="mmenu">
   <a href="#work">Work</a>
+  <a href="#demo">Live demo</a>
   <a href="#how">How it works</a>
   <a href="#pricing">Pricing</a>
   <a href="#faq">FAQ</a>
@@ -453,6 +519,264 @@ footer .legal{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;c
     </div>
   </div>
 </section>
+
+<!-- ============ INTERACTIVE DEMO ============ -->
+<section class="demo" id="demo" aria-label="Interactive demo">
+  <div class="wrap">
+    <div class="shead reveal">
+      <div class="grade-bar"></div>
+      <p class="eyebrow">Try it yourself</p>
+      <h2>See it before you build it.</h2>
+      <p>Pick a project, choose a style, hit generate. This is the same tool your clients tap right on your website.</p>
+    </div>
+
+    <div class="fd" role="group" aria-label="Rendering demo">
+      <div class="fd-grid">
+        <!-- CONTROLS -->
+        <div class="fd-controls">
+          <div class="fd-block">
+            <div class="fd-step"><span class="i">01</span> &nbsp;Choose the project</div>
+            <div class="fd-trades" id="fdTrades"></div>
+          </div>
+          <div class="fd-block">
+            <div class="fd-step"><span class="i">02</span> &nbsp;Pick a style</div>
+            <div class="fd-styles" id="fdStyles"></div>
+          </div>
+          <div class="fd-block">
+            <div class="fd-step"><span class="i">03</span> &nbsp;Finish</div>
+            <div class="fd-finishes" id="fdFinishes"></div>
+          </div>
+          <div class="fd-block">
+            <div class="fd-step"><span class="i">04</span> &nbsp;Your own photo <span style="color:var(--muted-2)">(optional)</span></div>
+            <div class="fd-upload">
+              <button type="button" class="fd-uploadbtn" id="fdUploadBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                Upload photo
+              </button>
+              <span class="fd-fname" id="fdFname"></span>
+              <input type="file" accept="image/*" class="fd-file" id="fdFile">
+            </div>
+          </div>
+          <button type="button" class="fd-generate" id="fdGenerate">Generate preview</button>
+        </div>
+
+        <!-- VIEWER -->
+        <div class="fd-viewer">
+          <div class="fd-ba" id="fdBa">
+            <img class="fd-before" id="fdBefore" alt="Before">
+            <div class="fd-after-layer" id="fdAfterLayer"><img class="fd-after" id="fdAfter" alt="After"></div>
+            <div class="fd-scan"></div>
+            <span class="fd-tag b">Before</span>
+            <span class="fd-tag a">After</span>
+            <span class="fd-badge" id="fdBadge">Sample</span>
+            <div class="fd-divider" id="fdDivider"></div>
+            <div class="fd-knob" id="fdKnob" tabindex="0" role="slider" aria-label="Reveal amount" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"></div>
+            <div class="fd-overlay" id="fdOverlay">
+              <div>
+                <div class="msg" id="fdMsg">Press Generate to preview</div>
+                <div class="bar" id="fdBar" hidden><i id="fdBarFill"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="fd-cap">
+            <span class="sel" id="fdSel"></span>
+            <span id="fdHint"></span>
+          </div>
+          <p class="fd-note" id="fdNote"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ============ 48 FRAMES — INTERACTIVE DEMO (client-facing, no backend) ============ */
+(function(){
+  var ba = document.getElementById('fdBa');
+  if(!ba) return;
+
+  // Trade -> 4 styles -> 4 finishes (labels drive the caption; the toggles show
+  // the real product controls). Add a fence before/after to images/ and fill in
+  // SAMPLES.fencing below to give fencing a live sample too.
+  var TRADES = [
+    {id:'concrete', label:'Concrete',
+      styles:[['stamped','Stamped'],['aggregate','Exposed aggregate'],['broom','Broom finish'],['overlay','Decorative overlay']],
+      finishes:[['warm-gray','Warm gray'],['charcoal','Charcoal'],['sandstone','Sandstone'],['autumn','Autumn blend']]},
+    {id:'fencing', label:'Fencing',
+      styles:[['privacy','Board-on-board'],['horizontal','Horizontal slat'],['picket','Picket'],['ornamental','Ornamental metal']],
+      finishes:[['cedar','Natural cedar'],['dark','Dark stain'],['white','White painted'],['black','Matte black']]},
+    {id:'decks', label:'Decks',
+      styles:[['composite','Composite'],['wood','Natural wood'],['multilevel','Multi-level'],['covered','Covered / pergola']],
+      finishes:[['weathered','Weathered gray'],['warm','Warm brown'],['espresso','Espresso'],['natural','Natural cedar']]}
+  ];
+  // Real before/after pairs already in your images/ folder.
+  var SAMPLES = {
+    concrete:{before:'images/driveway-before.jpeg', after:'images/driveway-after.jpeg'},
+    decks:{before:'images/deck-before.jpeg', after:'images/deck-after.jpeg'},
+    fencing:null
+  };
+  var FALLBACK = 'images/porch-before.jpeg'; // generic yard used when a trade has no sample
+
+  var els = {
+    trades:document.getElementById('fdTrades'), styles:document.getElementById('fdStyles'),
+    finishes:document.getElementById('fdFinishes'), before:document.getElementById('fdBefore'),
+    after:document.getElementById('fdAfter'), afterLayer:document.getElementById('fdAfterLayer'),
+    badge:document.getElementById('fdBadge'), divider:document.getElementById('fdDivider'),
+    knob:document.getElementById('fdKnob'), overlay:document.getElementById('fdOverlay'),
+    msg:document.getElementById('fdMsg'), bar:document.getElementById('fdBar'),
+    barFill:document.getElementById('fdBarFill'), sel:document.getElementById('fdSel'),
+    hint:document.getElementById('fdHint'), note:document.getElementById('fdNote'),
+    gen:document.getElementById('fdGenerate'), file:document.getElementById('fdFile'),
+    uploadBtn:document.getElementById('fdUploadBtn'), fname:document.getElementById('fdFname')
+  };
+
+  var state = {trade:0, style:0, finish:0, userImg:null, status:'idle', pos:100};
+
+  function trade(){ return TRADES[state.trade]; }
+
+  function setPos(p){
+    state.pos = Math.max(0, Math.min(100, p));
+    ba.style.setProperty('--pos', state.pos + '%');
+    els.knob.setAttribute('aria-valuenow', Math.round(state.pos));
+  }
+
+  function buildToggles(){
+    // trades
+    els.trades.innerHTML = '';
+    TRADES.forEach(function(t, i){
+      var b = document.createElement('button');
+      b.type='button'; b.className='fd-trade'+(i===state.trade?' on':''); b.textContent=t.label;
+      b.onclick=function(){ state.trade=i; state.style=0; state.finish=0; buildToggles(); resetView(); };
+      els.trades.appendChild(b);
+    });
+    // styles
+    els.styles.innerHTML='';
+    trade().styles.forEach(function(s,i){
+      var b=document.createElement('button');
+      b.type='button'; b.className='fd-style'+(i===state.style?' on':''); b.textContent=s[1];
+      b.onclick=function(){ state.style=i; buildToggles(); updateCaption(); };
+      els.styles.appendChild(b);
+    });
+    // finishes
+    els.finishes.innerHTML='';
+    trade().finishes.forEach(function(f,i){
+      var b=document.createElement('button');
+      b.type='button'; b.className='fd-finish'+(i===state.finish?' on':''); b.textContent=f[1];
+      b.onclick=function(){ state.finish=i; buildToggles(); updateCaption(); };
+      els.finishes.appendChild(b);
+    });
+  }
+
+  function updateCaption(){
+    var t=trade();
+    els.sel.textContent = t.label+' · '+t.styles[state.style][1]+' · '+t.finishes[state.finish][1];
+  }
+
+  function currentSample(){ return SAMPLES[trade().id]; }
+
+  function resetView(){
+    state.status='idle';
+    ba.classList.remove('done','working','anim');
+    els.afterLayer.classList.remove('sim');
+    setPos(100);
+    els.overlay.hidden=false;
+    els.bar.hidden=true; els.barFill.style.width='0%';
+    els.gen.disabled=false;
+    els.gen.textContent='Generate preview';
+    updateCaption();
+
+    var s=currentSample();
+    if(state.userImg){
+      els.before.src=state.userImg; els.after.src=state.userImg;
+      els.badge.textContent='Simulated preview';
+      els.msg.textContent='Press Generate to preview';
+      els.hint.textContent='Your photo';
+      els.note.textContent='Demo preview — the connected version renders your actual redesign in seconds.';
+    } else if(s){
+      els.before.src=s.before; els.after.src=s.after;
+      els.badge.textContent='Sample project';
+      els.msg.textContent='Press Generate to preview';
+      els.hint.textContent='Real 48 Frames sample';
+      els.note.textContent='This is a real before/after we produced. Upload your own photo to preview your project.';
+    } else {
+      // no sample for this trade (e.g. fencing) and no upload yet
+      els.before.src=FALLBACK; els.after.src=FALLBACK;
+      els.badge.textContent='Upload to preview';
+      els.msg.textContent='Upload a photo to preview '+trade().label.toLowerCase();
+      els.hint.textContent='';
+      els.note.textContent='Add a fencing sample to your images/ folder to demo it without an upload.';
+      els.gen.disabled=true;
+      els.gen.textContent='Upload a photo first';
+    }
+  }
+
+  function generate(){
+    if(state.status==='working') return;
+    var s=currentSample();
+    if(!state.userImg && !s) return; // fencing with no upload
+    state.status='working';
+    ba.classList.remove('done','anim');
+    ba.classList.add('working');
+    els.gen.disabled=true; els.gen.textContent='Rendering…';
+    els.overlay.hidden=false; els.msg.textContent='Rendering your preview';
+    els.bar.hidden=false;
+    if(window.matchMedia('(max-width:899px)').matches){ ba.scrollIntoView({behavior:'smooth',block:'center'}); }
+
+    var pct=0;
+    var timer=setInterval(function(){
+      pct+=Math.random()*16+6; if(pct>100)pct=100;
+      els.barFill.style.width=pct+'%';
+      if(pct>=100){ clearInterval(timer); finish(); }
+    },120);
+  }
+
+  function finish(){
+    els.afterLayer.classList.toggle('sim', !!state.userImg);
+    els.overlay.hidden=true;
+    ba.classList.remove('working');
+    ba.classList.add('done','anim');
+    // animate the reveal open to 50%
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ setPos(50); }); });
+    state.status='done';
+    els.gen.disabled=false; els.gen.textContent='Regenerate';
+  }
+
+  // drag / keyboard on the reveal
+  function pointFromEvent(e){
+    var rect=ba.getBoundingClientRect();
+    var x=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
+    setPos(x/rect.width*100);
+  }
+  var dragging=false;
+  ba.addEventListener('pointerdown',function(e){
+    if(state.status!=='done') return;
+    dragging=true; ba.setPointerCapture(e.pointerId); pointFromEvent(e);
+  });
+  ba.addEventListener('pointermove',function(e){ if(dragging){ pointFromEvent(e); } });
+  ba.addEventListener('pointerup',function(){ dragging=false; });
+  ba.addEventListener('pointercancel',function(){ dragging=false; });
+  els.knob.addEventListener('keydown',function(e){
+    if(state.status!=='done') return;
+    if(e.key==='ArrowLeft'){ setPos(state.pos-3); e.preventDefault(); }
+    if(e.key==='ArrowRight'){ setPos(state.pos+3); e.preventDefault(); }
+  });
+
+  // upload
+  els.uploadBtn.onclick=function(){ els.file.click(); };
+  els.file.onchange=function(e){
+    var f=e.target.files && e.target.files[0];
+    if(!f || f.type.indexOf('image')!==0) return;
+    var r=new FileReader();
+    r.onload=function(){ state.userImg=r.result; els.fname.textContent=f.name; resetView(); };
+    r.readAsDataURL(f);
+  };
+
+  els.gen.onclick=generate;
+
+  buildToggles();
+  resetView();
+})();
+</script>
 
 <!-- ============ HOW ============ -->
 <section class="how" id="how">
